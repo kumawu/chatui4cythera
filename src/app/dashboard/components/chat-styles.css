@@ -26,16 +26,66 @@
 
 .chatui-message-list {
   background-color: var(--background-color);
+  padding: 16px;
+}
+
+.chatui-message-item {
+  margin-bottom: 16px;
+}
+
+.chatui-message {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 空消息内容的样式 */
+.chatui-bubble:empty::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
 }
 
 .chatui-message-item-left .chatui-bubble {
   background-color: rgba(99, 102, 241, 0.15);
   color: var(--text-color);
+  border-radius: 12px 12px 12px 0;
+  padding: 12px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 85%;
+  margin-bottom: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  min-width: 60px;
+  min-height: 24px;
 }
 
 .chatui-message-item-right .chatui-bubble {
   background-color: rgba(99, 102, 241, 0.3);
   color: var(--text-color);
+  border-radius: 12px 12px 0 12px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 85%;
+  margin-bottom: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .chatui-input {
@@ -109,12 +159,11 @@
 
 .markdown-content {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #fff;
   margin: 0;
-  padding: 10px;
-  width: clamp(300px, 80%, 800px);
-  overflow-wrap: break-word;
+  padding: 0;
+  width: 100%;
   overflow-wrap: break-word;
 }
 

@@ -825,7 +825,7 @@ const ChatComponent = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_m
 const ASSISTANT_NAMES = [
     '数字能效分析师',
     '数字环境专员',
-    '数字安防监控员',
+    // '数字安防监控员',
     '数字设备健康主管',
     '数字综合运营协调员'
 ];
@@ -871,19 +871,19 @@ const AssistantList = ({ messages, setActiveChat })=>{
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex flex-col gap-4",
                 children: Array.from({
-                    length: 5
+                    length: 4
                 }).map((_, i)=>{
                     const descriptions = [
                         "分析能耗数据，监控设备能耗，标记异常并助力优化",
                         "监控冷库温湿度、光照，异常报警并优化照明使用",
-                        "实时监控单摄像头画面，检测运动及人员存在",
+                        // "实时监控单摄像头画面，检测运动及人员存在",
                         "基于空调能耗识别重大异常，预警设备故障",
                         "整合多源数据，提供基础运营状态监控仪表盘"
                     ];
                     const statuses = [
                         "分析中 - 分析能耗数据",
                         "监控中 - 监控冷库",
-                        "监控中 - 监控单摄像头画面",
+                        // "监控中 - 监控单摄像头画面",
                         "预警中 - 预警设备故障",
                         "分析中 - 整合多源数据"
                     ];

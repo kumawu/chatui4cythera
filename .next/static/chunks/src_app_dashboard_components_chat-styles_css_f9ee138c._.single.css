@@ -26,16 +26,67 @@
 
 .chatui-message-list {
   background-color: var(--background-color);
+  padding: 16px;
+}
+
+.chatui-message-item {
+  margin-bottom: 16px;
+}
+
+.chatui-message {
+  flex-direction: column;
+  display: flex;
+}
+
+.chatui-bubble:empty:before {
+  content: "";
+  background-color: #ffffff80;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: 1.5s ease-in-out infinite pulse;
+  display: inline-block;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: .5;
+    transform: scale(.8);
+  }
+
+  50% {
+    opacity: .8;
+    transform: scale(1.2);
+  }
+
+  100% {
+    opacity: .5;
+    transform: scale(.8);
+  }
 }
 
 .chatui-message-item-left .chatui-bubble {
   color: var(--text-color);
   background-color: #6366f126;
+  border: 1px solid #ffffff0d;
+  border-radius: 12px 12px 12px 0;
+  min-width: 60px;
+  max-width: 85%;
+  min-height: 24px;
+  margin-bottom: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 8px #0000001a;
 }
 
 .chatui-message-item-right .chatui-bubble {
   color: var(--text-color);
   background-color: #6366f14d;
+  border: 1px solid #ffffff0d;
+  border-radius: 12px 12px 0;
+  max-width: 85%;
+  margin-bottom: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 8px #0000001a;
 }
 
 .chatui-input {
@@ -109,12 +160,11 @@
 .markdown-content {
   color: #fff;
   overflow-wrap: break-word;
-  overflow-wrap: break-word;
-  width: clamp(300px, 80%, 800px);
+  width: 100%;
   margin: 0;
-  padding: 10px;
+  padding: 0;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .markdown-content table {

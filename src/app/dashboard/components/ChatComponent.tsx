@@ -47,111 +47,53 @@ const ROLE_QUICK_REPLIES: Record<string, QuickReply[]> = {
   // 数字能效分析师
   '数字能效分析师': [
     {
-      name: '分析能耗数据',
-      isNew: true
+      name: '💡照明系统是不是开得太久了？有节省空间吗？🤔',
     },
     {
-      name: '查看节能报告',
-      isHighlight: true
-    },
-    {
-      name: '设备能效对比'
-    },
-    {
-      name: '能耗异常检测'
+      name: '💨这几天挺热🌡️，我想知道空调用电是不是超了？🤔',
     }
   ],
   // 数字环境专员
   '数字环境专员': [
     {
-      name: '监控冷库温度',
-      isNew: true
+      name: '📡冷库环境最近波动大，是不是外面太热？',
     },
     {
-      name: '环境指标报告',
-      isHighlight: true
-    },
-    {
-      name: '光照优化建议'
-    },
-    {
-      name: '湿度异常检测'
+      name: '🚨有没有严重告警要立即处理？',
     }
   ],
   // 数字安防监控员
   '数字安防监控员': [
-    {
-      name: '监控区域状态',
-      isNew: true
-    },
-    {
-      name: '异常人员检测',
-      isHighlight: true
-    },
-    {
-      name: '安防系统状态'
-    },
-    {
-      name: '查看安全报告'
-    }
   ],
   // 数字设备健康主管
   '数字设备健康主管': [
     {
-      name: '设备状态检测',
-      isNew: true
+      name: '🔍调出最近3天空调用电趋势，我看看变化。',
     },
     {
-      name: '预测性维护提醒',
-      isHighlight: true
-    },
-    {
-      name: '设备故障分析'
-    },
-    {
-      name: '维修记录查询'
+      name: '🛠有没有哪台空调的能耗曲线特别奇怪？',
     }
   ],
   // 数字综合运营协调员
   '数字综合运营协调员': [
     {
-      name: '整合多源数据',
-      isNew: true
+      name: '🔎 今天整体状况如何？',
     },
     {
-      name: '运营状态监控',
-      isHighlight: true
+      name: '📈 最近总能耗趋势怎么样？',
     },
-    {
-      name: '部门协作效率'
-    },
-    {
-      name: '生成月度报告'
-    }
   ]
 };
 
 // 默认快速回复选项
-const DEFAULT_QUICK_REPLIES: QuickReply[] = [
-  {
-    name: '你好！',
-    isNew: true
-  },
-  {
-    name: '我需要技术支持',
-    isHighlight: true
-  },
-  {
-    name: '我想了解产品信息'
-  }
-];
+const DEFAULT_QUICK_REPLIES: QuickReply[] = [];
 
 interface ChatComponentProps {
   currentRole?: string;
 }
 
 export default function ChatComponent({ currentRole = '数字能效分析师' }: ChatComponentProps) {
-  const { messages, appendMsg } = useMessages([]);
+  const { messages, appendMsg, updateMsg } = useMessages([]);
   const { setThinkData } = useThinkContext();
   const [isTyping, setIsTyping] = useState(false);
   const chatRef = useRef<any>(null);
@@ -190,29 +132,6 @@ export default function ChatComponent({ currentRole = '数字能效分析师' }:
         } catch (e) {
           console.log('直接解析失败，尝试使用 DSL 解析器');
         }
-        
-        // 如果直接解析失败或不是预期的格式，尝试使用 DSL 解析器
-        // const parsedContent = parseDashboardDSL(thinkContentRef.current);
-        // console.groupCollapsed('Think内容更新');
-        // console.log('原始内容:', thinkContentRef.current);
-        // console.log('解析后的配置:', parsedContent);
-        // console.groupEnd();
-        
-        // setThinkData({
-        //   content: thinkContentRef.current,
-        //   parsedContent: parsedContent ? {
-        //     layout: parsedContent.layout,
-        //     cards: parsedContent.cards,
-        //     charts: parsedContent.charts?.map(chart => ({
-        //       ...chart,
-        //       data: JSON.stringify(chart.data)
-        //     }))
-        //   } : undefined,
-        //   metadata: {
-        //     type: 'dashboard',
-        //     timestamp: new Date().toISOString()
-        //   }
-        // });
       } catch (error) {
         console.error('Think内容更新错误:', error);
       }
@@ -229,8 +148,18 @@ export default function ChatComponent({ currentRole = '数字能效分析师' }:
 
       setIsTyping(true);
       try {
-        // 将当前角色信息添加到请求中
-        const response = await fetch('/api/daily-report', {
+        // 初始化一个空的回复消息
+        const messageId = Date.now().toString();
+        appendMsg({
+          _id: messageId,
+          type: 'text',
+          content: { text: '' },
+          position: 'left',
+        });
+        const currentMessageId = messageId;
+        
+        // 调用 chat API，使用流式响应
+        const chatResponse = await fetch('/api/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -238,31 +167,149 @@ export default function ChatComponent({ currentRole = '数字能效分析师' }:
           body: JSON.stringify({ message: val, role: currentRole })
         });
         
-        if (!response.ok) {
-          throw new Error('请求失败');
+        if (!chatResponse.ok) {
+          throw new Error('Chat API 请求失败');
         }
         
-        const responseData = await response.json();
-        console.log('Response:', responseData);
+        // 处理流式响应
+        const reader = chatResponse.body?.getReader();
+        if (!reader) {
+          throw new Error('无法获取响应流');
+        }
+        
+        let accumulatedContent = '';
+        let noDataContent = '';
+        let conversationId: string | null = null;
+        let finishFlag = false;
+        
+        // 读取流数据
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          
+          // 将数据转换为文本
+          const chunk = new TextDecoder().decode(value);
+          const lines = chunk.split('\n\n').filter(line => line.trim() !== '');
+          
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              const data = line.slice(6);
+              try {
+                const parsedData = JSON.parse(data);
+                
+                // 保存会话 ID
+                if (parsedData.metadata?.conversation_id && !conversationId) {
+                  conversationId = parsedData.metadata.conversation_id;
+                }
+                accumulatedContent += parsedData.content;
+                
+                // 累积内容
+                // if (parsedData.delta) {
+                //   accumulatedContent += parsedData.delta;
+                // } else if (parsedData.content) {
+                //   accumulatedContent = parsedData.content;
+                // }
+                
+                if(currentMessageId && !finishFlag){
+                  // 如果收到了<tools_data_result>就停止更新message
+                  if (accumulatedContent.includes('<tools_data_result>')) {
+                    finishFlag = true;
+                    noDataContent = accumulatedContent.replace('<tools_data_result>', '');
+                    
+                    updateMsg(currentMessageId, {
+                      type: 'markdown',
+                      content: { text: noDataContent },
+                      position: 'left',
+                    });
+                  }else {
+                    updateMsg(currentMessageId, {
+                      type: 'markdown',
+                      content: { text: accumulatedContent },
+                      position: 'left',
+                    });
+                  }
+                }
+                
+                // 如果收到结束事件，则保存完整回复
+                if (parsedData.metadata?.event_type === 'message_end') {
+                  
+                  // 将消息内容存入 Think 上下文
+                  console.log('完整响应:', accumulatedContent);
+                  
+                  // 调用 data-format 接口获取格式化数据
+                  fetch('/api/data-format', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      message: accumulatedContent,
+                      role: 'user'
+                    })
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                    // 从 data-format 接口响应中获取内容并设置到 thinkContentRef.current
+                    // thinkContentRef.current = noDataContent;
+                    setThinkData({
+                      content: noDataContent,
+                      parsedContent: {
+                        layout: 'grid(2, 2)',
+                        cards: data.cards,
+                        charts: data.charts?.map((chart: any) => ({
+                          ...chart,
+                          data: typeof chart.data === 'string' ? chart.data : JSON.stringify(chart.data)
+                        }))
+                      },
+                      metadata: {
+                        type: 'dashboard',
+                        timestamp: new Date().toISOString()
+                      }
+                    });
+                  })
+                  .catch(error => {
+                    console.error('调用 data-format 接口出错:', error);
+                  });
+                  
+                  break;
+                }
+              } catch (e) {
+                console.error('解析流数据错误:', e, data);
+              }
+            }
+          }
+        }
+        
+        // 流式响应已处理完毕，不需要再调用 daily-report API
+        // 如果需要将 Think 内容转换为图表数据，可以在这里处理
 
-        // 检查response是否为数组
-        if (Array.isArray(responseData)) {
-          // 如果是数组，依次添加每个消息
-          responseData.forEach(msg => {
-            console.log('添加消息:', msg.type, msg);
-            appendMsg({
-              type: msg.type,
-              content: typeof msg.content === 'string' ? { text: msg.content } : msg.content,
-              position: msg.position,
-            });
-          });
-        } else {
-          // 如果不是数组，按原来的方式处理
-          appendMsg({
-            type: responseData.type,
-            content: { text: responseData.content },
-            position: responseData.position,
-          });
+        if (thinkContentRef.current) {
+          try {
+            // 尝试解析 Think 内容中的图表数据
+            // const parsedContent = parseDashboardDSL(thinkContentRef.current);
+            // if (parsedContent) {
+            //   console.log('解析后的图表数据:', parsedContent);
+              
+            //   // 更新 Think 上下文
+            //   setThinkData({
+            //     content: thinkContentRef.current,
+            //     parsedContent: {
+            //       layout: parsedContent.layout,
+            //       cards: parsedContent.cards,
+            //       charts: parsedContent.charts?.map(chart => ({
+            //         ...chart,
+            //         data: JSON.stringify(chart.data)
+            //       }))
+            //     },
+            //     metadata: {
+            //       type: 'dashboard',
+            //       timestamp: new Date().toISOString()
+            //     }
+            //   });
+            // }
+          } catch (error) {
+            console.error('解析 Think 内容错误:', error);
+          }
         }
       } catch (error) {
         console.error('发送消息时出错:', error);
