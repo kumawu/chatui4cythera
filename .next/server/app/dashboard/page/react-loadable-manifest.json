@@ -1,0 +1,11 @@
+{
+  "[project]/src/app/dashboard/ChatComponent.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/app/dashboard/ChatComponent.tsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/node_modules_0cc7186a._.js",
+      "static/chunks/src_app_dashboard_ChatComponent_tsx_b7fff753._.js",
+      "static/chunks/_9b2b9410._.css",
+      "static/chunks/src_app_dashboard_ChatComponent_tsx_b7024aed._.js"
+    ]
+  }
+}

@@ -42,7 +42,97 @@ interface QuickReply {
   isHighlight?: boolean;
 }
 
-const QUICK_REPLIES: QuickReply[] = [
+// 根据不同角色定义快速回复选项
+const ROLE_QUICK_REPLIES: Record<string, QuickReply[]> = {
+  // 数字能效分析师
+  '数字能效分析师': [
+    {
+      name: '分析能耗数据',
+      isNew: true
+    },
+    {
+      name: '查看节能报告',
+      isHighlight: true
+    },
+    {
+      name: '设备能效对比'
+    },
+    {
+      name: '能耗异常检测'
+    }
+  ],
+  // 数字环境专员
+  '数字环境专员': [
+    {
+      name: '监控冷库温度',
+      isNew: true
+    },
+    {
+      name: '环境指标报告',
+      isHighlight: true
+    },
+    {
+      name: '光照优化建议'
+    },
+    {
+      name: '湿度异常检测'
+    }
+  ],
+  // 数字安防监控员
+  '数字安防监控员': [
+    {
+      name: '监控区域状态',
+      isNew: true
+    },
+    {
+      name: '异常人员检测',
+      isHighlight: true
+    },
+    {
+      name: '安防系统状态'
+    },
+    {
+      name: '查看安全报告'
+    }
+  ],
+  // 数字设备健康主管
+  '数字设备健康主管': [
+    {
+      name: '设备状态检测',
+      isNew: true
+    },
+    {
+      name: '预测性维护提醒',
+      isHighlight: true
+    },
+    {
+      name: '设备故障分析'
+    },
+    {
+      name: '维修记录查询'
+    }
+  ],
+  // 数字综合运营协调员
+  '数字综合运营协调员': [
+    {
+      name: '整合多源数据',
+      isNew: true
+    },
+    {
+      name: '运营状态监控',
+      isHighlight: true
+    },
+    {
+      name: '部门协作效率'
+    },
+    {
+      name: '生成月度报告'
+    }
+  ]
+};
+
+// 默认快速回复选项
+const DEFAULT_QUICK_REPLIES: QuickReply[] = [
   {
     name: '你好！',
     isNew: true
@@ -84,32 +174,70 @@ export default function ChatComponent() {
   const { messages, appendMsg } = useMessages([]);
   const { setThinkData } = useThinkContext();
   const [isTyping, setIsTyping] = useState(false);
+  // 添加当前选择的角色状态，但不在界面上显示切换器
+  const [currentRole, setCurrentRole] = useState<string>('数字能效分析师');
   const chatRef = useRef<any>(null);
   const thinkContentRef = useRef<string | null>(null);
 
   useEffect(() => {
+    console.log('thinkContentRef 更新检测:', thinkContentRef.current);
     if (thinkContentRef.current) {
-      const parsedContent = parseDashboardDSL(thinkContentRef.current);
-      console.groupCollapsed('Think内容更新');
-      console.log('原始内容:', thinkContentRef.current);
-      console.log('解析后的配置:', parsedContent);
-      console.groupEnd();
-      
-      setThinkData({
-        content: thinkContentRef.current,
-        parsedContent: parsedContent ? {
-          layout: parsedContent.layout,
-          cards: parsedContent.cards,
-          charts: parsedContent.charts?.map(chart => ({
-            ...chart,
-            data: JSON.stringify(chart.data)
-          }))
-        } : undefined,
-        metadata: {
-          type: 'dashboard',
-          timestamp: new Date().toISOString()
+      try {
+        // 尝试直接解析 JSON
+        let parsedData;
+        try {
+          parsedData = JSON.parse(thinkContentRef.current);
+          console.log('直接解析成功:', parsedData);
+          
+          // 如果已经是结构化数据，直接使用
+          if (parsedData.cards || parsedData.charts) {
+            console.log('使用预先解析的数据更新 ThinkData');
+            setThinkData({
+              content: thinkContentRef.current,
+              parsedContent: {
+                layout: parsedData.layout,
+                cards: parsedData.cards,
+                charts: parsedData.charts?.map((chart: any) => ({
+                  ...chart,
+                  data: typeof chart.data === 'string' ? chart.data : JSON.stringify(chart.data)
+                }))
+              },
+              metadata: {
+                type: 'dashboard',
+                timestamp: new Date().toISOString()
+              }
+            });
+            return;
+          }
+        } catch (e) {
+          console.log('直接解析失败，尝试使用 DSL 解析器');
         }
-      });
+        
+        // 如果直接解析失败或不是预期的格式，尝试使用 DSL 解析器
+        const parsedContent = parseDashboardDSL(thinkContentRef.current);
+        console.groupCollapsed('Think内容更新');
+        console.log('原始内容:', thinkContentRef.current);
+        console.log('解析后的配置:', parsedContent);
+        console.groupEnd();
+        
+        setThinkData({
+          content: thinkContentRef.current,
+          parsedContent: parsedContent ? {
+            layout: parsedContent.layout,
+            cards: parsedContent.cards,
+            charts: parsedContent.charts?.map(chart => ({
+              ...chart,
+              data: JSON.stringify(chart.data)
+            }))
+          } : undefined,
+          metadata: {
+            type: 'dashboard',
+            timestamp: new Date().toISOString()
+          }
+        });
+      } catch (error) {
+        console.error('Think内容更新错误:', error);
+      }
     }
   }, [messages, setThinkData]);
 
@@ -123,11 +251,27 @@ export default function ChatComponent() {
 
       setIsTyping(true);
       try {
-        const response = await sendMessage(val);
+        // 将当前角色信息添加到请求中
+        const response = await fetch('/api/daily-report', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ message: val, role: currentRole })
+        });
+        
+        if (!response.ok) {
+          throw new Error('请求失败');
+        }
+        
+        const responseData = await response.json();
+        console.log('Response:', responseData);
+
         // 检查response是否为数组
-        if (Array.isArray(response)) {
+        if (Array.isArray(responseData)) {
           // 如果是数组，依次添加每个消息
-          response.forEach(msg => {
+          responseData.forEach(msg => {
+            console.log('添加消息:', msg.type, msg);
             appendMsg({
               type: msg.type,
               content: typeof msg.content === 'string' ? { text: msg.content } : msg.content,
@@ -137,12 +281,13 @@ export default function ChatComponent() {
         } else {
           // 如果不是数组，按原来的方式处理
           appendMsg({
-            type: response.type,
-            content: { text: response.content },
-            position: response.position,
+            type: responseData.type,
+            content: { text: responseData.content },
+            position: responseData.position,
           });
         }
       } catch (error) {
+        console.error('发送消息时出错:', error);
         appendMsg({
           type: 'text',
           content: { text: '处理请求时出错' },
@@ -175,16 +320,44 @@ export default function ChatComponent() {
       );
     }
     
-    if (type === 'dsl' && content) {
-
+    // 处理 think 类型消息
+    if (type === 'think' && content) {
+      console.log('Think 消息接收到:', content);
       
       try {
-          console.log(content);
-          if("component_name" in content && content["component_name"] === "dashboard" ){
-            console.log('dashboard', content);
-            updateTremorDashboard(content["content"]);
-          }
-        
+        // 将 think 内容保存到 ref 中，这样 useEffect 可以检测到并更新 ThinkContext
+        if (content.parsedContent) {
+          thinkContentRef.current = JSON.stringify(content.parsedContent);
+          console.log('设置 thinkContentRef:', thinkContentRef.current);
+        }
+      } catch (error) {
+        console.error('处理 Think 消息失败:', error);
+      }
+      
+      return (
+        <Bubble>
+          <Think isDone thinkTime={3}>
+            <div className="p-4">
+              <pre>{JSON.stringify(content, null, 2)}</pre>
+            </div>
+          </Think>
+        </Bubble>
+      );
+    }
+    
+    // 处理旧的 dsl 类型消息（兼容性）
+    if (type === 'dsl' && content) {
+      console.log('DSL 消息接收到:', content);
+      
+      try {
+        if("component_name" in content && content["component_name"] === "dashboard" ){
+          console.log('dashboard', content);
+          updateTremorDashboard(content["content"]);
+          
+          // 将 DSL 内容保存到 ref 中
+          thinkContentRef.current = JSON.stringify(content["content"]);
+          console.log('设置 thinkContentRef (DSL):', thinkContentRef.current);
+        }
       } catch (error) {
         console.error('解析DSL失败:', error);
       }
@@ -414,8 +587,14 @@ export default function ChatComponent() {
     });
   }
 
+  // 根据当前角色获取对应的快速回复选项
+  const getQuickRepliesByRole = () => {
+    return ROLE_QUICK_REPLIES[currentRole] || DEFAULT_QUICK_REPLIES;
+  };
+
   return (
     <div className="h-full flex flex-col bg-transparent">
+      {/* 移除角色选择器，但保留角色选择功能 */}
       <Chat
         navbar={{ title: '' }}
         messages={messages}
@@ -425,7 +604,7 @@ export default function ChatComponent() {
         placeholder="请输入..."
         ref={chatRef}
         toolbar={[]}
-        quickReplies={QUICK_REPLIES}
+        quickReplies={getQuickRepliesByRole()}
         onQuickReplyClick={handleQuickReplyClick}
       />
     </div>
