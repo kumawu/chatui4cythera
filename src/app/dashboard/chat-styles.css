@@ -1,0 +1,161 @@
+:root {
+  --chatui-primary-color: #818cf8;
+  --chatui-secondary-color: #6366f1;
+  --chatui-background-color: rgba(99, 102, 241, 0.05);
+  --chatui-text-color: #e0e7ff;
+  --chatui-border-color: rgba(99, 102, 241, 0.1);
+  --app-bg: transparent;
+  --navbar-bg: rgba(99, 102, 241, 0.01);
+  --footer-bg: rgba(99, 102, 241, 0.01);
+}
+
+.chatui,
+.chatui * {
+  --primary-color: var(--chatui-primary-color);
+  --secondary-color: var(--chatui-secondary-color);
+  --background-color: var(--chatui-background-color);
+  --text-color: var(--chatui-text-color);
+  --border-color: var(--chatui-border-color);
+}
+
+.chatui-navbar {
+  background-color: rgba(99, 102, 241, 0.1);
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+}
+
+.chatui-message-list {
+  background-color: var(--background-color);
+}
+
+.chatui-message-item-left .chatui-bubble {
+  background-color: rgba(99, 102, 241, 0.15);
+  color: var(--text-color);
+}
+
+.chatui-message-item-right .chatui-bubble {
+  background-color: rgba(99, 102, 241, 0.3);
+  color: var(--text-color);
+}
+
+.chatui-input {
+  background-color: rgba(99, 102, 241, 0.1);
+  border-top: 1px solid var(--border-color);
+  
+}
+
+.chatui-input-textarea {
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+.chatui-input-send {
+  color: var(--primary-color);
+}
+
+.quick-phrases-container {
+  background-color: rgba(99, 102, 241, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quick-phrases-container button {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: var(--text-color);
+  border: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+  padding: 8px 16px;
+}
+
+.quick-phrases-container button:hover {
+  background-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-1px);
+}
+
+.ScrollView-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.ScrollView-inner > * {
+  width: 100%;
+  max-width: 100%;
+}
+
+.ScrollView-inner.align-left > * {
+  align-self: flex-start;
+}
+
+.ScrollView-inner.align-center > * {
+  align-self: center;
+}
+
+.ScrollView-inner.align-right > * {
+  align-self: flex-end;
+}
+
+.markdown-content {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  margin: 0;
+  padding: 10px;
+  width: clamp(300px, 80%, 800px);
+  overflow-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Markdown表格样式 */
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-content th,
+.markdown-content td {
+  padding: 0.5em 1em;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.markdown-content th {
+  background-color: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+}
+
+/* 代码块样式 */
+.markdown-content pre {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1em;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.markdown-content code {
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.2em 0.4em;
+  border-radius: 2px;
+}
+
+/* 响应式表格 */
+@media (max-width: 768px) {
+  .markdown-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
