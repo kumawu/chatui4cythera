@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { motion } from "framer-motion";
 import dynamic from 'next/dynamic';
 
-const ChatComponent = dynamic<{}>(() => import('../ChatComponent').then(mod => mod.default), {
+const ChatComponent = dynamic<{ currentRole?: string }>(() => import('./ChatComponent').then(mod => mod.default), {
   ssr: false
 });
 
@@ -151,7 +151,7 @@ const ChatView = ({ activeChat, setActiveChat }: ChatViewProps) => {
         <div className="w-8"></div>
       </div>
       <div className="flex-1 rounded-xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/10 shadow-lg transition-all hover:shadow-xl">
-        <ChatComponent key={activeChat} />
+        <ChatComponent key={activeChat} currentRole={ASSISTANT_NAMES[activeChat - 1]} />
       </div>
     </motion.div>
   );

@@ -101,7 +101,7 @@ const CardGrid = ({ cardData })=>{
     }, this);
 };
 }}),
-"[project]/src/app/dashboard/components/ChartComponent.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
+"[project]/src/app/dashboard/components/EChartComponent.tsx [app-ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
 var { g: global, __dirname } = __turbopack_context__;
@@ -145,7 +145,7 @@ const ChartComponent = ({ chart, index })=>{
                         className: "text-2xl font-semibold text-white mb-4",
                         children: chart.title || '数据图表'
                     }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 29,
                         columnNumber: 11
                     }, this),
@@ -155,7 +155,7 @@ const ChartComponent = ({ chart, index })=>{
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"
                             }, void 0, false, {
-                                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                 lineNumber: 31,
                                 columnNumber: 13
                             }, this),
@@ -169,7 +169,7 @@ const ChartComponent = ({ chart, index })=>{
                                             strokeDasharray: "3 3",
                                             stroke: "#374151"
                                         }, void 0, false, {
-                                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                             lineNumber: 34,
                                             columnNumber: 17
                                         }, this),
@@ -177,14 +177,14 @@ const ChartComponent = ({ chart, index })=>{
                                             dataKey: "name",
                                             stroke: "#9CA3AF"
                                         }, void 0, false, {
-                                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                             lineNumber: 35,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["YAxis"], {
                                             stroke: "#9CA3AF"
                                         }, void 0, false, {
-                                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                             lineNumber: 36,
                                             columnNumber: 17
                                         }, this),
@@ -201,12 +201,12 @@ const ChartComponent = ({ chart, index })=>{
                                                 fontWeight: "500"
                                             }
                                         }, void 0, false, {
-                                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                             lineNumber: 37,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Legend"], {}, void 0, false, {
-                                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                             lineNumber: 50,
                                             columnNumber: 17
                                         }, this),
@@ -215,30 +215,30 @@ const ChartComponent = ({ chart, index })=>{
                                             fill: "#3B82F6",
                                             name: chart.yAxis || '数值'
                                         }, void 0, false, {
-                                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                             lineNumber: 51,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
-                                    fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                    fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                     lineNumber: 33,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
-                                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                 lineNumber: 32,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 30,
                         columnNumber: 11
                     }, this)
                 ]
             }, `chart-${index}`, true, {
-                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                 lineNumber: 28,
                 columnNumber: 9
             }, this);
@@ -250,7 +250,7 @@ const ChartComponent = ({ chart, index })=>{
                         className: "text-2xl font-semibold text-white mb-4",
                         children: chart.title || '饼图数据'
                     }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 61,
                         columnNumber: 11
                     }, this),
@@ -279,12 +279,12 @@ const ChartComponent = ({ chart, index })=>{
                                                     '#8884d8'
                                                 ][i % 5]
                                             }, `cell-${i}`, false, {
-                                                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                                 lineNumber: 76,
                                                 columnNumber: 21
                                             }, this))
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 65,
                                         columnNumber: 17
                                     }, this),
@@ -297,34 +297,34 @@ const ChartComponent = ({ chart, index })=>{
                                             color: "#F3F4F6"
                                         }
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 79,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Legend"], {}, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 83,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
-                                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                 lineNumber: 64,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
-                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                             lineNumber: 63,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 62,
                         columnNumber: 11
                     }, this)
                 ]
             }, `chart-${index}`, true, {
-                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                 lineNumber: 60,
                 columnNumber: 9
             }, this);
@@ -336,7 +336,7 @@ const ChartComponent = ({ chart, index })=>{
                         className: "text-2xl font-semibold text-white mb-4",
                         children: chart.title || '线图数据'
                     }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 93,
                         columnNumber: 11
                     }, this),
@@ -358,7 +358,7 @@ const ChartComponent = ({ chart, index })=>{
                                         strokeDasharray: "3 3",
                                         stroke: "#374151"
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 100,
                                         columnNumber: 17
                                     }, this),
@@ -366,14 +366,14 @@ const ChartComponent = ({ chart, index })=>{
                                         dataKey: "date",
                                         stroke: "#9CA3AF"
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 101,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["YAxis"], {
                                         stroke: "#9CA3AF"
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 102,
                                         columnNumber: 17
                                     }, this),
@@ -386,12 +386,12 @@ const ChartComponent = ({ chart, index })=>{
                                             color: "#F3F4F6"
                                         }
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 103,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Legend"], {}, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 107,
                                         columnNumber: 17
                                     }, this),
@@ -401,7 +401,7 @@ const ChartComponent = ({ chart, index })=>{
                                         stroke: "#3B82F6",
                                         name: "能耗"
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 108,
                                         columnNumber: 17
                                     }, this),
@@ -411,29 +411,29 @@ const ChartComponent = ({ chart, index })=>{
                                         stroke: "#F59E0B",
                                         name: "温度"
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 109,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
-                                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                 lineNumber: 96,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
-                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                             lineNumber: 95,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 94,
                         columnNumber: 11
                     }, this)
                 ]
             }, `chart-${index}`, true, {
-                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                 lineNumber: 92,
                 columnNumber: 9
             }, this);
@@ -445,7 +445,7 @@ const ChartComponent = ({ chart, index })=>{
                         className: "text-2xl font-semibold text-white mb-4",
                         children: chart.title || '雷达图数据'
                     }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 119,
                         columnNumber: 11
                     }, this),
@@ -461,7 +461,7 @@ const ChartComponent = ({ chart, index })=>{
                                 data: chart.data,
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$polar$2f$PolarGrid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["PolarGrid"], {}, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 123,
                                         columnNumber: 17
                                     }, this),
@@ -469,7 +469,7 @@ const ChartComponent = ({ chart, index })=>{
                                         dataKey: "skill",
                                         stroke: "#9CA3AF"
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 124,
                                         columnNumber: 17
                                     }, this),
@@ -481,7 +481,7 @@ const ChartComponent = ({ chart, index })=>{
                                         ],
                                         stroke: "#9CA3AF"
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 125,
                                         columnNumber: 17
                                     }, this),
@@ -492,7 +492,7 @@ const ChartComponent = ({ chart, index })=>{
                                         fill: "#3B82F6",
                                         fillOpacity: 0.6
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 126,
                                         columnNumber: 17
                                     }, this),
@@ -505,34 +505,34 @@ const ChartComponent = ({ chart, index })=>{
                                             color: "#F3F4F6"
                                         }
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 127,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Legend"], {}, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 131,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
-                                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                 lineNumber: 122,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
-                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                             lineNumber: 121,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 120,
                         columnNumber: 11
                     }, this)
                 ]
             }, `chart-${index}`, true, {
-                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                 lineNumber: 118,
                 columnNumber: 9
             }, this);
@@ -544,7 +544,7 @@ const ChartComponent = ({ chart, index })=>{
                         className: "text-2xl font-semibold text-white mb-4",
                         children: chart.title || '数据图表'
                     }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 141,
                         columnNumber: 11
                     }, this),
@@ -557,18 +557,18 @@ const ChartComponent = ({ chart, index })=>{
                                 chart.type
                             ]
                         }, void 0, true, {
-                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                             lineNumber: 143,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 142,
                         columnNumber: 11
                     }, this)
                 ]
             }, `chart-${index}`, true, {
-                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                 lineNumber: 140,
                 columnNumber: 9
             }, this);
@@ -584,7 +584,7 @@ const DefaultCharts = ({ dashboardData })=>{
                         className: "text-2xl font-semibold text-white mb-4",
                         children: "月度数据"
                     }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 159,
                         columnNumber: 9
                     }, this),
@@ -594,7 +594,7 @@ const DefaultCharts = ({ dashboardData })=>{
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-3xl"
                             }, void 0, false, {
-                                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                 lineNumber: 161,
                                 columnNumber: 11
                             }, this),
@@ -608,7 +608,7 @@ const DefaultCharts = ({ dashboardData })=>{
                                             strokeDasharray: "3 3",
                                             stroke: "#374151"
                                         }, void 0, false, {
-                                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                             lineNumber: 164,
                                             columnNumber: 15
                                         }, this),
@@ -616,14 +616,14 @@ const DefaultCharts = ({ dashboardData })=>{
                                             dataKey: "name",
                                             stroke: "#9CA3AF"
                                         }, void 0, false, {
-                                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                             lineNumber: 165,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$cartesian$2f$YAxis$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["YAxis"], {
                                             stroke: "#9CA3AF"
                                         }, void 0, false, {
-                                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                             lineNumber: 166,
                                             columnNumber: 15
                                         }, this),
@@ -640,12 +640,12 @@ const DefaultCharts = ({ dashboardData })=>{
                                                 fontWeight: "500"
                                             }
                                         }, void 0, false, {
-                                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                             lineNumber: 167,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Legend"], {}, void 0, false, {
-                                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                             lineNumber: 180,
                                             columnNumber: 15
                                         }, this),
@@ -654,30 +654,30 @@ const DefaultCharts = ({ dashboardData })=>{
                                             fill: "#3B82F6",
                                             name: "候选人数量"
                                         }, void 0, false, {
-                                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                             lineNumber: 181,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
-                                    fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                    fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                     lineNumber: 163,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
-                                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                 lineNumber: 162,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 160,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
-                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                 lineNumber: 158,
                 columnNumber: 7
             }, this),
@@ -688,7 +688,7 @@ const DefaultCharts = ({ dashboardData })=>{
                         className: "text-2xl font-semibold text-white mb-4",
                         children: "职位分布"
                     }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 188,
                         columnNumber: 9
                     }, this),
@@ -720,12 +720,12 @@ const DefaultCharts = ({ dashboardData })=>{
                                                     '#8884d8'
                                                 ][index % 5]
                                             }, `cell-${index}`, false, {
-                                                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                                 lineNumber: 203,
                                                 columnNumber: 19
                                             }, this))
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 192,
                                         columnNumber: 15
                                     }, this),
@@ -738,34 +738,34 @@ const DefaultCharts = ({ dashboardData })=>{
                                             color: "#F3F4F6"
                                         }
                                     }, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 206,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$recharts$2f$es6$2f$component$2f$Legend$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Legend"], {}, void 0, false, {
-                                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                         lineNumber: 210,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
-                                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                                 lineNumber: 191,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
-                            fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                            fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                             lineNumber: 190,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                         lineNumber: 189,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
-                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                 lineNumber: 187,
                 columnNumber: 7
             }, this)
@@ -779,12 +779,12 @@ const ChartGrid = ({ chartData })=>{
                 chart: chart,
                 index: index
             }, index, false, {
-                fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+                fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
                 lineNumber: 229,
                 columnNumber: 11
             }, this)) : null
     }, void 0, false, {
-        fileName: "[project]/src/app/dashboard/components/ChartComponent.tsx",
+        fileName: "[project]/src/app/dashboard/components/EChartComponent.tsx",
         lineNumber: 226,
         columnNumber: 5
     }, this);
@@ -814,10 +814,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 ;
 ;
-const Chat = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(async ()=>{}, {
+const ChatComponent = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(async ()=>{}, {
     loadableGenerated: {
         modules: [
-            "[project]/src/app/dashboard/components/Chat.tsx [app-client] (ecmascript, next/dynamic entry)"
+            "[project]/src/app/dashboard/components/ChatComponent.tsx [app-client] (ecmascript, next/dynamic entry)"
         ]
     },
     ssr: false
@@ -1115,7 +1115,7 @@ const ChatView = ({ activeChat, setActiveChat })=>{
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "flex-1 rounded-xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/10 shadow-lg transition-all hover:shadow-xl",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Chat, {
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ChatComponent, {
                     currentRole: ASSISTANT_NAMES[activeChat - 1]
                 }, activeChat, false, {
                     fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
@@ -1966,7 +1966,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$ThinkContext$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/dashboard/ThinkContext.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$components$2f$CardGrid$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/dashboard/components/CardGrid.tsx [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$components$2f$ChartComponent$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/dashboard/components/ChartComponent.tsx [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$components$2f$EChartComponent$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/dashboard/components/EChartComponent.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$components$2f$Sidebar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/dashboard/components/Sidebar.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$components$2f$DeviceGrid$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/dashboard/components/DeviceGrid.tsx [app-ssr] (ecmascript)");
 ;
@@ -2176,7 +2176,7 @@ const DashboardContent = ()=>{
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "mb-8",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$components$2f$ChartComponent$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ChartGrid"], {
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$components$2f$EChartComponent$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["ChartGrid"], {
                             chartData: chartData
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
@@ -2295,4 +2295,4 @@ function DashboardPage() {
 
 };
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__f72c7645._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__776e1a95._.js.map

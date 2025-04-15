@@ -23,7 +23,7 @@ marked.setOptions({
 });
 import React, { useState, useRef, useCallback } from 'react';
 import Chat, { Think, Bubble, useMessages } from '@chatui/core';
-import { useThinkContext, type ThinkData } from './ThinkContext';
+import { useThinkContext, type ThinkData } from '../ThinkContext';
 import '@chatui/core/dist/index.css';
 import './chat-styles.css';
 
@@ -146,36 +146,14 @@ const DEFAULT_QUICK_REPLIES: QuickReply[] = [
   }
 ];
 
-async function sendMessage(message: string) {
-  try {
-    const response = await fetch('/api/daily-report', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ message })
-    });
-    
-    if (!response.ok) {
-      throw new Error('请求失败');
-    }
-    return await response.json();
-  } catch (error) {
-    console.error('发送消息时出错:', error);
-    return {
-      type: 'text',
-      content: '无法处理您的请求',
-      position: 'left'
-    };
-  }
+interface ChatComponentProps {
+  currentRole?: string;
 }
 
-export default function ChatComponent() {
+export default function ChatComponent({ currentRole = '数字能效分析师' }: ChatComponentProps) {
   const { messages, appendMsg } = useMessages([]);
   const { setThinkData } = useThinkContext();
   const [isTyping, setIsTyping] = useState(false);
-  // 添加当前选择的角色状态，但不在界面上显示切换器
-  const [currentRole, setCurrentRole] = useState<string>('数字能效分析师');
   const chatRef = useRef<any>(null);
   const thinkContentRef = useRef<string | null>(null);
 
@@ -214,27 +192,27 @@ export default function ChatComponent() {
         }
         
         // 如果直接解析失败或不是预期的格式，尝试使用 DSL 解析器
-        const parsedContent = parseDashboardDSL(thinkContentRef.current);
-        console.groupCollapsed('Think内容更新');
-        console.log('原始内容:', thinkContentRef.current);
-        console.log('解析后的配置:', parsedContent);
-        console.groupEnd();
+        // const parsedContent = parseDashboardDSL(thinkContentRef.current);
+        // console.groupCollapsed('Think内容更新');
+        // console.log('原始内容:', thinkContentRef.current);
+        // console.log('解析后的配置:', parsedContent);
+        // console.groupEnd();
         
-        setThinkData({
-          content: thinkContentRef.current,
-          parsedContent: parsedContent ? {
-            layout: parsedContent.layout,
-            cards: parsedContent.cards,
-            charts: parsedContent.charts?.map(chart => ({
-              ...chart,
-              data: JSON.stringify(chart.data)
-            }))
-          } : undefined,
-          metadata: {
-            type: 'dashboard',
-            timestamp: new Date().toISOString()
-          }
-        });
+        // setThinkData({
+        //   content: thinkContentRef.current,
+        //   parsedContent: parsedContent ? {
+        //     layout: parsedContent.layout,
+        //     cards: parsedContent.cards,
+        //     charts: parsedContent.charts?.map(chart => ({
+        //       ...chart,
+        //       data: JSON.stringify(chart.data)
+        //     }))
+        //   } : undefined,
+        //   metadata: {
+        //     type: 'dashboard',
+        //     timestamp: new Date().toISOString()
+        //   }
+        // });
       } catch (error) {
         console.error('Think内容更新错误:', error);
       }

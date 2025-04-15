@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useThinkContext } from '../ThinkContext';
 import { motion } from "framer-motion";
 import { CardGrid } from './CardGrid';
-import { ChartGrid } from './ChartComponent';
+import { ChartGrid } from './EChartComponent';
 import { Sidebar } from './Sidebar';
 import { DeviceGrid } from './DeviceGrid';
 
@@ -75,7 +75,7 @@ export const DashboardContent = () => {
     }
   ]);
   const [chartData, setChartData] = useState<ChartData[]>([]);
-  const [dashboardTitle, setDashboardTitle] = useState("详细数据");
+  const [dashboardTitle, setDashboardTitle] = useState("数据概览");
   
   // 设备数据状态
   const [deviceData, setDeviceData] = useState<DeviceData>({
@@ -129,7 +129,15 @@ export const DashboardContent = () => {
   
   // 侧边栏状态
   const [sidebarWidth] = useState(320);
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<string[]>([
+    "数字能效分析师：能源消耗数据分析报告已生成，本月节能率提升12%",
+    "数字环境专员：冷库温度波动超出预设范围，建议检查制冷系统",
+    "数字安防监控员：监控到3号区域有未授权人员活动，已自动记录",
+    "数字设备健康主管：2号生产线设备预测性维护提醒，建议下周检修",
+    "数字综合运营协调员：已整合各部门数据，月度运营报告可在系统查看",
+    "数字能效分析师：发现能耗异常峰值，可能存在设备效率问题",
+    "数字环境专员：环境监测系统显示空气质量指数良好，符合生产标准"
+  ]);
   const [activeChat, setActiveChat] = useState<number | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 

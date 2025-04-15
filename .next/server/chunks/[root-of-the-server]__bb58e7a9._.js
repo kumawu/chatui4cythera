@@ -770,25 +770,14 @@ async function POST(request) {
     try {
         const { message, role } = await request.json();
         let response;
+        console.log("daily-report: ", message, role);
         // 根据角色和消息内容返回不同的报告
         if (role === '数字能效分析师') {
             // 能效分析师角色
-            if (message.includes('能耗') || message.includes('能效') || message.includes('分析能耗数据')) {
-                response = generateEnergyReport();
-            } else if (message.includes('节能报告') || message.includes('查看节能报告')) {
-                response = generateEnergyReport();
-            } else {
-                response = generateEnergyReport();
-            }
+            response = generateEnergyReport();
         } else if (role === '数字环境专员') {
             // 环境专员角色
-            if (message.includes('冷库') || message.includes('温度') || message.includes('监控冷库温度')) {
-                response = generateColdStorageReport();
-            } else if (message.includes('环境指标') || message.includes('环境指标报告')) {
-                response = generateColdStorageReport();
-            } else {
-                response = generateColdStorageReport();
-            }
+            response = generateColdStorageReport();
         } else if (role === '数字安防监控员') {
             // 安防监控员角色
             response = generateSecurityReport();
@@ -798,15 +787,8 @@ async function POST(request) {
         } else if (role === '数字综合运营协调员') {
             // 综合运营协调员角色
             response = generateOperationReport();
-        } else if (message.includes('日报')) {
-            response = {
-                type: 'text',
-                content: `这是@${role || '数字能效分析师'} 返回的内容，日期：${new Date().toISOString()}`,
-                position: 'left'
-            };
         } else {
             // 默认返回 综合运营协调员角色数据
-            // response = generateAnalysisReport();
             response = generateOperationReport();
         }
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(Array.isArray(response) ? response : [

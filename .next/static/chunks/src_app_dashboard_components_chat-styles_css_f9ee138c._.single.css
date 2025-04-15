@@ -1,0 +1,158 @@
+/* [project]/src/app/dashboard/components/chat-styles.css [app-client] (css) */
+:root {
+  --chatui-primary-color: #818cf8;
+  --chatui-secondary-color: #6366f1;
+  --chatui-background-color: #6366f10d;
+  --chatui-text-color: #e0e7ff;
+  --chatui-border-color: #6366f11a;
+  --app-bg: transparent;
+  --navbar-bg: #6366f103;
+  --footer-bg: #6366f103;
+}
+
+.chatui, .chatui * {
+  --primary-color: var(--chatui-primary-color);
+  --secondary-color: var(--chatui-secondary-color);
+  --background-color: var(--chatui-background-color);
+  --text-color: var(--chatui-text-color);
+  --border-color: var(--chatui-border-color);
+}
+
+.chatui-navbar {
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  background-color: #6366f11a;
+}
+
+.chatui-message-list {
+  background-color: var(--background-color);
+}
+
+.chatui-message-item-left .chatui-bubble {
+  color: var(--text-color);
+  background-color: #6366f126;
+}
+
+.chatui-message-item-right .chatui-bubble {
+  color: var(--text-color);
+  background-color: #6366f14d;
+}
+
+.chatui-input {
+  border-top: 1px solid var(--border-color);
+  background-color: #6366f11a;
+}
+
+.chatui-input-textarea {
+  color: var(--text-color);
+  background-color: #0000;
+}
+
+.chatui-input-send {
+  color: var(--primary-color);
+}
+
+.quick-phrases-container {
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 100;
+  background-color: #6366f11a;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 8px 16px;
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+
+.quick-phrases-container button {
+  color: var(--text-color);
+  white-space: nowrap;
+  text-align: left;
+  background-color: #6366f133;
+  border: none;
+  width: 100%;
+  padding: 8px 16px;
+  transition: all .2s;
+}
+
+.quick-phrases-container button:hover {
+  background-color: #6366f14d;
+  transform: translateY(-1px);
+}
+
+.ScrollView-inner {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  display: flex;
+}
+
+.ScrollView-inner > * {
+  width: 100%;
+  max-width: 100%;
+}
+
+.ScrollView-inner.align-left > * {
+  align-self: flex-start;
+}
+
+.ScrollView-inner.align-center > * {
+  align-self: center;
+}
+
+.ScrollView-inner.align-right > * {
+  align-self: flex-end;
+}
+
+.markdown-content {
+  color: #fff;
+  overflow-wrap: break-word;
+  overflow-wrap: break-word;
+  width: clamp(300px, 80%, 800px);
+  margin: 0;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.markdown-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.markdown-content th, .markdown-content td {
+  border: 1px solid #ffffff1a;
+  padding: .5em 1em;
+}
+
+.markdown-content th {
+  background-color: #ffffff0d;
+  font-weight: 600;
+}
+
+.markdown-content pre {
+  background-color: #0000004d;
+  border-radius: 4px;
+  padding: 1em;
+  overflow-x: auto;
+}
+
+.markdown-content code {
+  background-color: #0003;
+  border-radius: 2px;
+  padding: .2em .4em;
+  font-family: monospace;
+}
+
+@media (width <= 768px) {
+  .markdown-content table {
+    white-space: nowrap;
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+/*# sourceMappingURL=src_app_dashboard_components_chat-styles_css_f9ee138c._.single.css.map*/

@@ -1,11 +1,11 @@
 {
-  "[project]/src/app/dashboard/ChatComponent.tsx [app-client] (ecmascript, next/dynamic entry)": {
-    "id": "[project]/src/app/dashboard/ChatComponent.tsx [app-client] (ecmascript, next/dynamic entry)",
+  "[project]/src/app/dashboard/components/ChatComponent.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/app/dashboard/components/ChatComponent.tsx [app-client] (ecmascript, next/dynamic entry)",
     "files": [
       "static/chunks/node_modules_0cc7186a._.js",
-      "static/chunks/src_app_dashboard_ChatComponent_tsx_b7fff753._.js",
-      "static/chunks/_9b2b9410._.css",
-      "static/chunks/src_app_dashboard_ChatComponent_tsx_b7024aed._.js"
+      "static/chunks/src_app_dashboard_components_ChatComponent_tsx_3b4fa3eb._.js",
+      "static/chunks/_0a305e26._.css",
+      "static/chunks/src_app_dashboard_components_ChatComponent_tsx_04beb11e._.js"
     ]
   }
 }
