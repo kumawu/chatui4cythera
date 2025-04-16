@@ -81,51 +81,30 @@ export const DashboardContent = () => {
   const [deviceData, setDeviceData] = useState<DeviceData>({
     apiVersion: "v3",
     statusCode: 200,
-    totalCount: 7,
-    devices: [
-      {
-        "created": 1744693892527,
-        "modified": 1744693892527,
-        "id": "fd9d393d-6b30-4860-939b-f83dc585436f",
-        "name": "Modbus-TCP-Device-齐大圣智能卧室网关",
-        "description": "Modbus TCP device configuration generated from scan results",
-        "adminState": "UNLOCKED",
-        "operatingState": "UP",
-        "labels": [
-          "Modbus TCP"
-        ],
-        "serviceName": "device-modbus",
-        "profileName": "Generic-Modbus-Device-Profile-齐大圣智能卧室网关",
-        "autoEvents": [
-          {
-            "interval": "1s",
-            "onChange": false,
-            "sourceName": "Humidity"
-          },
-          {
-            "interval": "1s",
-            "onChange": false,
-            "sourceName": "Temperature"
-          },
-          {
-            "interval": "1s",
-            "onChange": false,
-            "sourceName": "Switch"
-          }
-        ],
-        "protocols": {
-          "modbus-tcp": {
-            "Address": "10.222.96.88",
-            "IdleTimeout": "5",
-            "Port": "2008",
-            "Timeout": "5",
-            "UnitID": "1"
-          }
-        },
-        "properties": {}
-      }
-    ]
+    totalCount: 0,
+    devices: []
   });
+  
+  // 从 API 获取设备数据
+  useEffect(() => {
+    const fetchDevices = async () => {
+      try {
+        const response = await fetch('/api/devices?offset=0&limit=10');
+        if (!response.ok) {
+          throw new Error(`设备 API 请求失败: ${response.status} ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        console.log('从 API 获取的设备数据:', data);
+        
+        setDeviceData(data);
+      } catch (error) {
+        console.error('获取设备数据出错:', error);
+      }
+    };
+    
+    fetchDevices();
+  }, []);
   
   // 侧边栏状态
   const [sidebarWidth] = useState(320);

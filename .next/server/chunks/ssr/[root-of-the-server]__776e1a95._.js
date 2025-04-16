@@ -2006,51 +2006,26 @@ const DashboardContent = ()=>{
     const [deviceData, setDeviceData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
         apiVersion: "v3",
         statusCode: 200,
-        totalCount: 7,
-        devices: [
-            {
-                "created": 1744693892527,
-                "modified": 1744693892527,
-                "id": "fd9d393d-6b30-4860-939b-f83dc585436f",
-                "name": "Modbus-TCP-Device-齐大圣智能卧室网关",
-                "description": "Modbus TCP device configuration generated from scan results",
-                "adminState": "UNLOCKED",
-                "operatingState": "UP",
-                "labels": [
-                    "Modbus TCP"
-                ],
-                "serviceName": "device-modbus",
-                "profileName": "Generic-Modbus-Device-Profile-齐大圣智能卧室网关",
-                "autoEvents": [
-                    {
-                        "interval": "1s",
-                        "onChange": false,
-                        "sourceName": "Humidity"
-                    },
-                    {
-                        "interval": "1s",
-                        "onChange": false,
-                        "sourceName": "Temperature"
-                    },
-                    {
-                        "interval": "1s",
-                        "onChange": false,
-                        "sourceName": "Switch"
-                    }
-                ],
-                "protocols": {
-                    "modbus-tcp": {
-                        "Address": "10.222.96.88",
-                        "IdleTimeout": "5",
-                        "Port": "2008",
-                        "Timeout": "5",
-                        "UnitID": "1"
-                    }
-                },
-                "properties": {}
-            }
-        ]
+        totalCount: 0,
+        devices: []
     });
+    // 从 API 获取设备数据
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        const fetchDevices = async ()=>{
+            try {
+                const response = await fetch('/api/devices?offset=0&limit=10');
+                if (!response.ok) {
+                    throw new Error(`设备 API 请求失败: ${response.status} ${response.statusText}`);
+                }
+                const data = await response.json();
+                console.log('从 API 获取的设备数据:', data);
+                setDeviceData(data);
+            } catch (error) {
+                console.error('获取设备数据出错:', error);
+            }
+        };
+        fetchDevices();
+    }, []);
     // 侧边栏状态
     const [sidebarWidth] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(320);
     const [messages, setMessages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([
@@ -2157,7 +2132,7 @@ const DashboardContent = ()=>{
                         children: dashboardTitle
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 230,
+                        lineNumber: 209,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2166,12 +2141,12 @@ const DashboardContent = ()=>{
                             cardData: cardData
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                            lineNumber: 234,
+                            lineNumber: 213,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 233,
+                        lineNumber: 212,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2180,12 +2155,12 @@ const DashboardContent = ()=>{
                             chartData: chartData
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                            lineNumber: 239,
+                            lineNumber: 218,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 238,
+                        lineNumber: 217,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2194,18 +2169,18 @@ const DashboardContent = ()=>{
                             deviceData: deviceData
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                            lineNumber: 244,
+                            lineNumber: 223,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 243,
+                        lineNumber: 222,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                lineNumber: 229,
+                lineNumber: 208,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2215,7 +2190,7 @@ const DashboardContent = ()=>{
                         className: "absolute inset-y-0 left-1/2 -translate-x-1/2 w-1 h-full bg-white/20 hover:bg-white/40 transition-colors"
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 252,
+                        lineNumber: 231,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2224,18 +2199,18 @@ const DashboardContent = ()=>{
                             className: "w-1 h-4 bg-white/50 rounded-full"
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                            lineNumber: 254,
+                            lineNumber: 233,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 253,
+                        lineNumber: 232,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                lineNumber: 249,
+                lineNumber: 228,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2247,18 +2222,18 @@ const DashboardContent = ()=>{
                     sidebarWidth: sidebarWidth
                 }, void 0, false, {
                     fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                    lineNumber: 260,
+                    lineNumber: 239,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                lineNumber: 259,
+                lineNumber: 238,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-        lineNumber: 222,
+        lineNumber: 201,
         columnNumber: 5
     }, this);
 };
