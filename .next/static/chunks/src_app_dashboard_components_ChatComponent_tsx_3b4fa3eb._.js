@@ -42,7 +42,6 @@ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$marked$2f$lib$2f
 ;
 // 根据不同角色定义快速回复选项
 const ROLE_QUICK_REPLIES = {
-    // 数字能效分析师
     '数字能效分析师': [
         {
             name: '💡照明系统是不是开得太久了？有节省空间吗？🤔'
@@ -51,7 +50,6 @@ const ROLE_QUICK_REPLIES = {
             name: '💨这几天挺热🌡️，我想知道空调用电是不是超了？🤔'
         }
     ],
-    // 数字环境专员
     '数字环境专员': [
         {
             name: '📡冷库环境最近波动大，是不是外面太热？'
@@ -60,9 +58,6 @@ const ROLE_QUICK_REPLIES = {
             name: '🚨有没有严重告警要立即处理？'
         }
     ],
-    // 数字安防监控员
-    '数字安防监控员': [],
-    // 数字设备健康主管
     '数字设备健康主管': [
         {
             name: '🔍调出最近3天空调用电趋势，我看看变化。'
@@ -71,7 +66,6 @@ const ROLE_QUICK_REPLIES = {
             name: '🛠有没有哪台空调的能耗曲线特别奇怪？'
         }
     ],
-    // 数字综合运营协调员
     '数字综合运营协调员': [
         {
             name: '🔎 今天整体状况如何？'
@@ -88,6 +82,7 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
     const { messages, appendMsg, updateMsg } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chatui$2f$core$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMessages"])([]);
     const { setThinkData } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$ThinkContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useThinkContext"])();
     const [isTyping, setIsTyping] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isStreaming, setIsStreaming] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false); // 添加流式响应状态
     const chatRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const thinkContentRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
@@ -143,21 +138,42 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                 },
                 position: 'right'
             });
-            setIsTyping(true);
+            setIsTyping(true); // 设置正在输入状态
+            setIsStreaming(true); // 设置流式响应状态为 true
             try {
-                // 初始化一个空的回复消息
+                // 初始化一个空的回复消息，空消息会自动显示为 loading 状态
                 const messageId = Date.now().toString();
                 appendMsg({
                     _id: messageId,
-                    type: 'text',
+                    type: 'markdown',
                     content: {
                         text: ''
                     },
                     position: 'left'
                 });
                 const currentMessageId = messageId;
-                // 调用 chat API，使用流式响应
-                const chatResponse = await fetch('/api/chat', {
+                // 根据当前角色选择对应的 chatBot API
+                let chatBot = '/api/chat-bot1'; // 默认值
+                // 根据 currentRole 来选择不同的 API 端点
+                switch(currentRole){
+                    case '数字能效分析师':
+                        chatBot = '/api/chat-bot1';
+                        break;
+                    case '数字环境专员':
+                        chatBot = '/api/chat-bot2';
+                        break;
+                    case '数字设备健康主管':
+                        chatBot = '/api/chat-bot3';
+                        break;
+                    case '数字综合运营协调员':
+                        chatBot = '/api/chat-bot4';
+                        break;
+                    default:
+                        chatBot = '/api/chat-bot4';
+                        break;
+                }
+                console.log(`当前角色: ${currentRole}, 使用 API: ${chatBot}`);
+                const chatResponse = await fetch(chatBot, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -196,12 +212,6 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                     conversationId = parsedData.metadata.conversation_id;
                                 }
                                 accumulatedContent += parsedData.content;
-                                // 累积内容
-                                // if (parsedData.delta) {
-                                //   accumulatedContent += parsedData.delta;
-                                // } else if (parsedData.content) {
-                                //   accumulatedContent = parsedData.content;
-                                // }
                                 if (currentMessageId && !finishFlag) {
                                     // 如果收到了<tools_data_result>就停止更新message
                                     if (accumulatedContent.includes('<tools_data_result>')) {
@@ -215,6 +225,7 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                             position: 'left'
                                         });
                                     } else {
+                                        // 每次更新都保持使用 markdown 类型
                                         updateMsg(currentMessageId, {
                                             type: 'markdown',
                                             content: {
@@ -239,8 +250,10 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                             role: 'user'
                                         })
                                     }).then((response)=>response.json()).then((data)=>{
-                                        // 从 data-format 接口响应中获取内容并设置到 thinkContentRef.current
-                                        // thinkContentRef.current = noDataContent;
+                                        // 从 data-format 接口响应中获取内容并设置到 
+                                        // 流式响应完成，获取数据完成，设置状态为 false
+                                        setIsStreaming(false);
+                                        setIsTyping(false); // 同时关闭打字指示器
                                         setThinkData({
                                             content: noDataContent,
                                             parsedContent: {
@@ -267,35 +280,6 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                         }
                     }
                 }
-                // 流式响应已处理完毕，不需要再调用 daily-report API
-                // 如果需要将 Think 内容转换为图表数据，可以在这里处理
-                if (thinkContentRef.current) {
-                    try {
-                    // 尝试解析 Think 内容中的图表数据
-                    // const parsedContent = parseDashboardDSL(thinkContentRef.current);
-                    // if (parsedContent) {
-                    //   console.log('解析后的图表数据:', parsedContent);
-                    //   // 更新 Think 上下文
-                    //   setThinkData({
-                    //     content: thinkContentRef.current,
-                    //     parsedContent: {
-                    //       layout: parsedContent.layout,
-                    //       cards: parsedContent.cards,
-                    //       charts: parsedContent.charts?.map(chart => ({
-                    //         ...chart,
-                    //         data: JSON.stringify(chart.data)
-                    //       }))
-                    //     },
-                    //     metadata: {
-                    //       type: 'dashboard',
-                    //       timestamp: new Date().toISOString()
-                    //     }
-                    //   });
-                    // }
-                    } catch (error) {
-                        console.error('解析 Think 内容错误:', error);
-                    }
-                }
             } catch (error) {
                 console.error('发送消息时出错:', error);
                 appendMsg({
@@ -305,8 +289,10 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                     },
                     position: 'left'
                 });
+                // 发生错误时，重置所有状态
+                setIsStreaming(false);
             }
-            setIsTyping(false);
+            setIsTyping(false); // 关闭打字指示器
         }
     }
     function handleQuickReplyClick(item) {
@@ -316,12 +302,78 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
         "ChatComponent.useCallback[renderMessageContent]": (msg)=>{
             const { type, content } = msg;
             console.log('msg', msg);
+            // 如果消息内容为空且正在流式响应中，显示自定义的 loading 指示器
+            if (type === 'markdown' && (!content?.text || content.text === '') && isStreaming && msg.position === 'left') {
+                console.log('显示 loading 指示器', msg);
+                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chatui$2f$core$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Bubble"], {
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex items-center space-x-2 p-2",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex space-x-1",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "w-2 h-2 rounded-full bg-indigo-400 animate-pulse",
+                                        style: {
+                                            animationDelay: '0ms'
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                        lineNumber: 312,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "w-2 h-2 rounded-full bg-indigo-400 animate-pulse",
+                                        style: {
+                                            animationDelay: '300ms'
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                        lineNumber: 313,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "w-2 h-2 rounded-full bg-indigo-400 animate-pulse",
+                                        style: {
+                                            animationDelay: '600ms'
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                        lineNumber: 314,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                lineNumber: 311,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "text-sm text-indigo-300",
+                                children: "正在生成响应..."
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                lineNumber: 316,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                        lineNumber: 310,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                    lineNumber: 309,
+                    columnNumber: 9
+                }, this);
+            }
             if (type === 'text' && content?.text) {
                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chatui$2f$core$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Bubble"], {
                     content: content.text
                 }, void 0, false, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 334,
+                    lineNumber: 323,
                     columnNumber: 14
                 }, this);
             }
@@ -329,19 +381,77 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                 const text = typeof content === 'string' ? content : content?.text || '';
                 const html = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$marked$2f$lib$2f$marked$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["marked"].parse(text);
                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "markdown-content p-4 bg-white/5 rounded-lg",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        dangerouslySetInnerHTML: {
-                            __html: html
-                        }
-                    }, void 0, false, {
-                        fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                        lineNumber: 343,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
+                    className: "markdown-content p-6 bg-white/5 rounded-lg",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            dangerouslySetInnerHTML: {
+                                __html: html
+                            }
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                            lineNumber: 332,
+                            columnNumber: 11
+                        }, this),
+                        isStreaming && msg.position === 'left' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex items-center space-x-2 mt-3 border-t border-white/10 pt-3",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex space-x-1",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-2 h-2 rounded-full bg-indigo-400 animate-pulse",
+                                            style: {
+                                                animationDelay: '0ms'
+                                            }
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                            lineNumber: 337,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-2 h-2 rounded-full bg-indigo-400 animate-pulse",
+                                            style: {
+                                                animationDelay: '300ms'
+                                            }
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                            lineNumber: 338,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "w-2 h-2 rounded-full bg-indigo-400 animate-pulse",
+                                            style: {
+                                                animationDelay: '600ms'
+                                            }
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                            lineNumber: 339,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                    lineNumber: 336,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "text-sm text-indigo-300",
+                                    children: "正在生成..."
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                    lineNumber: 341,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                            lineNumber: 335,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 342,
+                    lineNumber: 331,
                     columnNumber: 9
                 }, this);
             }
@@ -351,7 +461,7 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                 try {
                     // 将 think 内容保存到 ref 中，这样 useEffect 可以检测到并更新 ThinkContext
                     if (content.parsedContent) {
-                        thinkContentRef.current = JSON.stringify(content.parsedContent);
+                        // thinkContentRef.current = JSON.stringify(content.parsedContent);
                         console.log('设置 thinkContentRef:', thinkContentRef.current);
                     }
                 } catch (error) {
@@ -431,7 +541,9 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
             }
             return null;
         }
-    }["ChatComponent.useCallback[renderMessageContent]"], []); // 空依赖数组，表示这个函数只会创建一次
+    }["ChatComponent.useCallback[renderMessageContent]"], [
+        isStreaming
+    ]); // 添加 isStreaming 作为依赖项，确保状态变化时函数重新创建
     function updateTremorDashboard(config) {
         // 这里实现更新Tremor大屏的逻辑
         console.log('更新Tremor大屏配置:', config);
@@ -450,219 +562,101 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
             });
         }
     }
-    // 辅助函数：解析Dashboard DSL配置
-    function parseDashboardDSL(dslContent) {
-        // 提取dashboard配置块
-        const dashboardRegex = /dashboard\s*{([\s\S]*?)}/;
-        const dashboardMatch = dslContent.match(dashboardRegex);
-        if (!dashboardMatch) {
-            return null;
-        }
-        const configContent = dashboardMatch[1];
-        try {
-            const result = {};
-            // 提取layout
-            const layoutMatch = configContent.match(/layout:\s*([^\s;]+)/);
-            if (layoutMatch) {
-                result.layout = layoutMatch[1];
-            }
-            // 提取cards
-            const cardRegex = /card\s*{([\s\S]*?)}/g;
-            let cardMatch;
-            result.cards = [];
-            while((cardMatch = cardRegex.exec(configContent)) !== null){
-                const cardContent = cardMatch[1];
-                const typeMatch = cardContent.match(/type:\s*"([^"]+)"/);
-                const metricsMatch = cardContent.match(/metrics:\s*\[([\s\S]*?)\]/);
-                if (typeMatch && metricsMatch) {
-                    const metrics = metricsMatch[1].split('},').map((metricStr)=>{
-                        const titleMatch = metricStr.match(/title:\s*"([^"]+)"/);
-                        const valueMatch = metricStr.match(/value:\s*([^,}]+)/);
-                        const trendMatch = metricStr.match(/trend:\s*"([^"]+)"/);
-                        const metric = {
-                            title: titleMatch ? titleMatch[1] : '',
-                            value: valueMatch ? valueMatch[1].replace(/"/g, '') : ''
-                        };
-                        if (trendMatch) {
-                            metric.trend = trendMatch[1];
-                        }
-                        // 尝试将value转换为数字
-                        if (!isNaN(Number(metric.value))) {
-                            metric.value = Number(metric.value);
-                        }
-                        return metric;
-                    });
-                    result.cards.push({
-                        type: typeMatch[1],
-                        metrics
-                    });
-                }
-            }
-            // 提取charts
-            const chartRegex = /chart\s*{([\s\S]*?)}/g;
-            let chartMatch;
-            result.charts = [];
-            while((chartMatch = chartRegex.exec(configContent)) !== null){
-                const chartContent = chartMatch[1];
-                const typeMatch = chartContent.match(/type:\s*"([^"]+)"/);
-                const titleMatch = chartContent.match(/title:\s*"([^"]+)"/);
-                const xAxisMatch = chartContent.match(/xAxis:\s*"([^"]+)"/);
-                const yAxisMatch = chartContent.match(/yAxis:\s*"([^"]+)"/);
-                const chart = {
-                    type: typeMatch ? typeMatch[1] : '',
-                    data: [],
-                    title: titleMatch ? titleMatch[1] : ''
-                };
-                if (xAxisMatch) {
-                    chart.xAxis = xAxisMatch[1];
-                }
-                if (yAxisMatch) {
-                    chart.yAxis = yAxisMatch[1];
-                }
-                // 根据图表类型生成示例数据
-                let data = [];
-                if (chart.type === 'bar') {
-                    data = [
-                        {
-                            name: "1月",
-                            value: 120
-                        },
-                        {
-                            name: "2月",
-                            value: 150
-                        },
-                        {
-                            name: "3月",
-                            value: 180
-                        },
-                        {
-                            name: "4月",
-                            value: 200
-                        },
-                        {
-                            name: "5月",
-                            value: 220
-                        },
-                        {
-                            name: "6月",
-                            value: 250
-                        },
-                        {
-                            name: "7月",
-                            value: 280
-                        }
-                    ];
-                } else if (chart.type === 'line') {
-                    data = [
-                        {
-                            range: "0-10k",
-                            count: 50
-                        },
-                        {
-                            range: "10-20k",
-                            count: 110
-                        },
-                        {
-                            range: "20-30k",
-                            count: 90
-                        },
-                        {
-                            range: "30k+",
-                            count: 50
-                        }
-                    ];
-                } else if (chart.type === 'pie' || chart.type === 'radar') {
-                    data = [
-                        {
-                            name: "工程师",
-                            value: 100
-                        },
-                        {
-                            name: "市场",
-                            value: 60
-                        },
-                        {
-                            name: "销售",
-                            value: 50
-                        },
-                        {
-                            name: "设计",
-                            value: 25
-                        },
-                        {
-                            name: "HR",
-                            value: 45
-                        }
-                    ];
-                }
-                result.charts.push({
-                    ...chart,
-                    data
-                });
-            }
-            return result;
-        } catch (error) {
-            console.error('DSL解析错误:', error);
-            return null;
-        }
-    }
-    // 辅助函数：从DSL内容中提取特定属性值
-    function extractValue(content, key) {
-        const regex = new RegExp(`${key}\\s*:\\s*["']?([^,"'\\n\\r}]*)["']?`, 'i');
-        const match = content.match(regex);
-        return match ? match[1].trim() : null;
-    }
-    // 辅助函数：提取指标数组
-    function extractMetrics(content) {
-        if (!content.includes('metrics')) {
-            return [];
-        }
-        const metricsStart = content.indexOf('metrics');
-        const metricsEnd = content.indexOf(']', metricsStart);
-        if (metricsStart === -1 || metricsEnd === -1) {
-            return [];
-        }
-        const metricsContent = content.substring(metricsStart, metricsEnd + 1);
-        const metricObjects = metricsContent.match(/{([^}]*)}/g) || [];
-        return metricObjects.map((metricStr)=>{
-            return {
-                title: extractValue(metricStr, 'title'),
-                value: extractValue(metricStr, 'value'),
-                trend: extractValue(metricStr, 'trend')
-            };
-        });
-    }
     // 根据当前角色获取对应的快速回复选项
     const getQuickRepliesByRole = ()=>{
         return ROLE_QUICK_REPLIES[currentRole] || DEFAULT_QUICK_REPLIES;
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "h-full flex flex-col bg-transparent",
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chatui$2f$core$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-            navbar: {
-                title: ''
-            },
-            messages: messages,
-            renderMessageContent: renderMessageContent,
-            onSend: handleSend,
-            locale: "zh-CN",
-            placeholder: "请输入...",
-            ref: chatRef,
-            toolbar: [],
-            quickReplies: getQuickRepliesByRole(),
-            onQuickReplyClick: handleQuickReplyClick
-        }, void 0, false, {
-            fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-            lineNumber: 623,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
+        children: [
+            isTyping && !isStreaming && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "px-4 py-2 text-xs text-gray-500",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex items-center",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex space-x-1 mr-2",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "w-1.5 h-1.5 rounded-full bg-gray-400 animate-pulse",
+                                    style: {
+                                        animationDelay: '0ms'
+                                    }
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                    lineNumber: 455,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "w-1.5 h-1.5 rounded-full bg-gray-400 animate-pulse",
+                                    style: {
+                                        animationDelay: '300ms'
+                                    }
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                    lineNumber: 456,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "w-1.5 h-1.5 rounded-full bg-gray-400 animate-pulse",
+                                    style: {
+                                        animationDelay: '600ms'
+                                    }
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                                    lineNumber: 457,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                            lineNumber: 454,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            children: "对方正在输入..."
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                            lineNumber: 459,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                    lineNumber: 453,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                lineNumber: 452,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chatui$2f$core$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                navbar: {
+                    title: ''
+                },
+                messages: messages,
+                renderMessageContent: renderMessageContent,
+                onSend: isStreaming ? ()=>{} : handleSend,
+                locale: "zh-CN",
+                placeholder: isStreaming ? "正在生成响应..." : "请输入...",
+                ref: chatRef,
+                toolbar: [],
+                quickReplies: isStreaming ? [] : getQuickRepliesByRole(),
+                onQuickReplyClick: isStreaming ? ()=>{} : handleQuickReplyClick
+            }, void 0, false, {
+                fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
+                lineNumber: 463,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-        lineNumber: 621,
+        lineNumber: 450,
         columnNumber: 5
     }, this);
 }
-_s(ChatComponent, "V010sRfmqKn4nrsMfpg9tlNdl/Y=", false, function() {
+_s(ChatComponent, "ghwscTqYygpxWe7nlogZOXoxSw0=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chatui$2f$core$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMessages"],
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$ThinkContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useThinkContext"]

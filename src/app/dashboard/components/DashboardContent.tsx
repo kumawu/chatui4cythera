@@ -108,6 +108,7 @@ export const DashboardContent = () => {
   
   // 侧边栏状态
   const [sidebarWidth] = useState(320);
+  const [isChatActive, setIsChatActive] = useState(false); // 添加聊天模式状态
   const [messages, setMessages] = useState<string[]>([
     "数字能效分析师：能源消耗数据分析报告已生成，本月节能率提升12%",
     "数字环境专员：冷库温度波动超出预设范围，建议检查制冷系统",
@@ -118,12 +119,22 @@ export const DashboardContent = () => {
     "数字环境专员：环境监测系统显示空气质量指数良好，符合生产标准"
   ]);
   const [activeChat, setActiveChat] = useState<number | null>(null);
+  
+  // 当 activeChat 改变时，更新聊天模式状态
+  useEffect(() => {
+    setIsChatActive(activeChat !== null);
+  }, [activeChat]);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   // 处理发送消息
   const handleSendMessage = (message: string) => {
     setMessages(prev => [...prev, `用户: ${message}`]);
     // 这里可以添加实际的消息发送逻辑
+  };
+  
+  // 切换聊天模式
+  const toggleChatMode = (isActive: boolean) => {
+    setIsChatActive(isActive);
   };
 
   // 消息滚动到底部
@@ -234,13 +245,13 @@ export const DashboardContent = () => {
         </div>
       </div>
       
-      {/* 右侧边栏 */}
-      <div className="w-[320px] h-full">
+      {/* 右侧边栏 - 在聊天模式下加宽 */}
+      <div className={`${isChatActive ? 'w-[640px]' : 'w-[320px]'} h-full transition-all duration-300 ease-in-out`}>
         <Sidebar 
           activeChat={activeChat}
           setActiveChat={setActiveChat}
           messages={messages}
-          sidebarWidth={sidebarWidth}
+          sidebarWidth={isChatActive ? 640 : sidebarWidth} // 根据聊天模式动态调整宽度
         />
       </div>
     </motion.div>

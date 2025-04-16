@@ -2072,6 +2072,7 @@ const DashboardContent = ()=>{
     }["DashboardContent.useEffect"], []);
     // 侧边栏状态
     const [sidebarWidth] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(320);
+    const [isChatActive, setIsChatActive] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false); // 添加聊天模式状态
     const [messages, setMessages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([
         "数字能效分析师：能源消耗数据分析报告已生成，本月节能率提升12%",
         "数字环境专员：冷库温度波动超出预设范围，建议检查制冷系统",
@@ -2082,6 +2083,14 @@ const DashboardContent = ()=>{
         "数字环境专员：环境监测系统显示空气质量指数良好，符合生产标准"
     ]);
     const [activeChat, setActiveChat] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    // 当 activeChat 改变时，更新聊天模式状态
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "DashboardContent.useEffect": ()=>{
+            setIsChatActive(activeChat !== null);
+        }
+    }["DashboardContent.useEffect"], [
+        activeChat
+    ]);
     const messagesEndRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     // 处理发送消息
     const handleSendMessage = (message)=>{
@@ -2090,6 +2099,10 @@ const DashboardContent = ()=>{
                 `用户: ${message}`
             ]);
     // 这里可以添加实际的消息发送逻辑
+    };
+    // 切换聊天模式
+    const toggleChatMode = (isActive)=>{
+        setIsChatActive(isActive);
     };
     // 消息滚动到底部
     const scrollToBottom = ()=>{
@@ -2188,7 +2201,7 @@ const DashboardContent = ()=>{
                         children: dashboardTitle
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 209,
+                        lineNumber: 220,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2197,12 +2210,12 @@ const DashboardContent = ()=>{
                             cardData: cardData
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                            lineNumber: 213,
+                            lineNumber: 224,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 212,
+                        lineNumber: 223,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2211,12 +2224,12 @@ const DashboardContent = ()=>{
                             chartData: chartData
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                            lineNumber: 218,
+                            lineNumber: 229,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 217,
+                        lineNumber: 228,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2225,18 +2238,18 @@ const DashboardContent = ()=>{
                             deviceData: deviceData
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                            lineNumber: 223,
+                            lineNumber: 234,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 222,
+                        lineNumber: 233,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                lineNumber: 208,
+                lineNumber: 219,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2246,7 +2259,7 @@ const DashboardContent = ()=>{
                         className: "absolute inset-y-0 left-1/2 -translate-x-1/2 w-1 h-full bg-white/20 hover:bg-white/40 transition-colors"
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 231,
+                        lineNumber: 242,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2255,45 +2268,45 @@ const DashboardContent = ()=>{
                             className: "w-1 h-4 bg-white/50 rounded-full"
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                            lineNumber: 233,
+                            lineNumber: 244,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 232,
+                        lineNumber: 243,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                lineNumber: 228,
+                lineNumber: 239,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "w-[320px] h-full",
+                className: `${isChatActive ? 'w-[640px]' : 'w-[320px]'} h-full transition-all duration-300 ease-in-out`,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$components$2f$Sidebar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Sidebar"], {
                     activeChat: activeChat,
                     setActiveChat: setActiveChat,
                     messages: messages,
-                    sidebarWidth: sidebarWidth
+                    sidebarWidth: isChatActive ? 640 : sidebarWidth
                 }, void 0, false, {
                     fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                    lineNumber: 239,
+                    lineNumber: 250,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                lineNumber: 238,
+                lineNumber: 249,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-        lineNumber: 201,
+        lineNumber: 212,
         columnNumber: 5
     }, this);
 };
-_s(DashboardContent, "smj/CtJ2ckj0eUY5/DLf5RRkmfQ=", false, function() {
+_s(DashboardContent, "cupUw1MYMzHCoiqwmLlHct7ScQQ=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$ThinkContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useThinkContext"]
     ];
