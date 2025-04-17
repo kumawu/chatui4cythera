@@ -159,7 +159,7 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
         }
         
         let accumulatedContent = '';
-        let noDataContent = '';
+        let noToolDataContent = '';
         let conversationId: string | null = null;
         let finishFlag = false;
         
@@ -182,31 +182,41 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
                 if (parsedData.metadata?.conversation_id && !conversationId) {
                   conversationId = parsedData.metadata.conversation_id;
                 }
+                
+                // 过滤掉 <tools_data_result>...</tools_data_result> 标签及其内容
+                const filteredContent = parsedData.content ? parsedData.content.replace(/<tools_data_result>[\s\S]*?<\/tools_data_result>/g, '') : '';
                 accumulatedContent += parsedData.content;
+                noToolDataContent += filteredContent;
                 
-                if(currentMessageId && !finishFlag){
-                  // 如果收到了<tools_data_result>就停止更新message
-                  if (accumulatedContent.includes('<tools_data_result>')) {
-                    finishFlag = true;
-                    noDataContent = accumulatedContent.replace('<tools_data_result>', '');
+                updateMsg(currentMessageId, {
+                  type: 'markdown',
+                  content: { text: noToolDataContent },
+                  position: 'left',
+                });
+
+                // if(currentMessageId && !finishFlag){
+                //   // 如果收到了<tools_data_result>就停止更新message
+                //   if (accumulatedContent.includes('<tools_data_result>')) {
+                //     finishFlag = true;
+                //     noToolDataContent = accumulatedContent.replace('<tools_data_result>', '');
                     
-                    updateMsg(currentMessageId, {
-                      type: 'markdown',
-                      content: { text: noDataContent },
-                      position: 'left',
-                    });
-                  }else {
-                    // 每次更新都保持使用 markdown 类型
-                    updateMsg(currentMessageId, {
-                      type: 'markdown',
-                      content: { text: accumulatedContent },
-                      position: 'left',
-                    });
-                  }
-                }
+                //     updateMsg(currentMessageId, {
+                //       type: 'markdown',
+                //       content: { text: noToolDataContent },
+                //       position: 'left',
+                //     });
+                //   }else {
+                //     // 每次更新都保持使用 markdown 类型
+                //     updateMsg(currentMessageId, {
+                //       type: 'markdown',
+                //       content: { text: accumulatedContent },
+                //       position: 'left',
+                //     });
+                //   }
+                // }
                 
-                // 如果收到结束事件，则保存完整回复
-                if (parsedData.metadata?.event_type === 'message_end') {
+                // 如果消息中包含完整的tools_data_result标签，则处理数据格式化
+                if (accumulatedContent.includes('<tools_data_result>') && accumulatedContent.includes('</tools_data_result>')) {
                   
                   
                   // 将消息内容存入 Think 上下文
@@ -232,7 +242,7 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
                     setIsTyping(false); // 同时关闭打字指示器
 
                     setThinkData({
-                      content: noDataContent,
+                      content: noToolDataContent,
                       parsedContent: {
                         layout: 'grid(2, 2)',
                         cards: data.cards,

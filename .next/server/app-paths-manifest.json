@@ -1,6 +1,7 @@
 {
   "/api/chat/route": "app/api/chat/route.js",
   "/api/data-format/route": "app/api/data-format/route.js",
+  "/api/device-commands/route": "app/api/device-commands/route.js",
   "/api/devices/route": "app/api/devices/route.js",
   "/dashboard/page": "app/dashboard/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js"

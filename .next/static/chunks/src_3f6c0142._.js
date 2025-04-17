@@ -221,7 +221,7 @@ function ChatComponent({ currentRole = '' }) {
                     throw new Error('无法获取响应流');
                 }
                 let accumulatedContent = '';
-                let noDataContent = '';
+                let noToolDataContent = '';
                 let conversationId = null;
                 let finishFlag = false;
                 // 读取流数据
@@ -240,32 +240,38 @@ function ChatComponent({ currentRole = '' }) {
                                 if (parsedData.metadata?.conversation_id && !conversationId) {
                                     conversationId = parsedData.metadata.conversation_id;
                                 }
+                                // 过滤掉 <tools_data_result>...</tools_data_result> 标签及其内容
+                                const filteredContent = parsedData.content ? parsedData.content.replace(/<tools_data_result>[\s\S]*?<\/tools_data_result>/g, '') : '';
                                 accumulatedContent += parsedData.content;
-                                if (currentMessageId && !finishFlag) {
-                                    // 如果收到了<tools_data_result>就停止更新message
-                                    if (accumulatedContent.includes('<tools_data_result>')) {
-                                        finishFlag = true;
-                                        noDataContent = accumulatedContent.replace('<tools_data_result>', '');
-                                        updateMsg(currentMessageId, {
-                                            type: 'markdown',
-                                            content: {
-                                                text: noDataContent
-                                            },
-                                            position: 'left'
-                                        });
-                                    } else {
-                                        // 每次更新都保持使用 markdown 类型
-                                        updateMsg(currentMessageId, {
-                                            type: 'markdown',
-                                            content: {
-                                                text: accumulatedContent
-                                            },
-                                            position: 'left'
-                                        });
-                                    }
-                                }
-                                // 如果收到结束事件，则保存完整回复
-                                if (parsedData.metadata?.event_type === 'message_end') {
+                                noToolDataContent += filteredContent;
+                                updateMsg(currentMessageId, {
+                                    type: 'markdown',
+                                    content: {
+                                        text: noToolDataContent
+                                    },
+                                    position: 'left'
+                                });
+                                // if(currentMessageId && !finishFlag){
+                                //   // 如果收到了<tools_data_result>就停止更新message
+                                //   if (accumulatedContent.includes('<tools_data_result>')) {
+                                //     finishFlag = true;
+                                //     noToolDataContent = accumulatedContent.replace('<tools_data_result>', '');
+                                //     updateMsg(currentMessageId, {
+                                //       type: 'markdown',
+                                //       content: { text: noToolDataContent },
+                                //       position: 'left',
+                                //     });
+                                //   }else {
+                                //     // 每次更新都保持使用 markdown 类型
+                                //     updateMsg(currentMessageId, {
+                                //       type: 'markdown',
+                                //       content: { text: accumulatedContent },
+                                //       position: 'left',
+                                //     });
+                                //   }
+                                // }
+                                // 如果消息中包含完整的tools_data_result标签，则处理数据格式化
+                                if (accumulatedContent.includes('<tools_data_result>') && accumulatedContent.includes('</tools_data_result>')) {
                                     // 将消息内容存入 Think 上下文
                                     console.log('完整响应:', accumulatedContent);
                                     // 调用 data-format 接口获取格式化数据
@@ -285,7 +291,7 @@ function ChatComponent({ currentRole = '' }) {
                                         setIsStreaming(false);
                                         setIsTyping(false); // 同时关闭打字指示器
                                         setThinkData({
-                                            content: noDataContent,
+                                            content: noToolDataContent,
                                             parsedContent: {
                                                 layout: 'grid(2, 2)',
                                                 cards: data.cards,
@@ -349,7 +355,7 @@ function ChatComponent({ currentRole = '' }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                        lineNumber: 291,
+                                        lineNumber: 301,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -359,7 +365,7 @@ function ChatComponent({ currentRole = '' }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                        lineNumber: 292,
+                                        lineNumber: 302,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -369,13 +375,13 @@ function ChatComponent({ currentRole = '' }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                        lineNumber: 293,
+                                        lineNumber: 303,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                lineNumber: 290,
+                                lineNumber: 300,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -383,18 +389,18 @@ function ChatComponent({ currentRole = '' }) {
                                 children: t('chat.generating')
                             }, void 0, false, {
                                 fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                lineNumber: 295,
+                                lineNumber: 305,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                        lineNumber: 289,
+                        lineNumber: 299,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 288,
+                    lineNumber: 298,
                     columnNumber: 9
                 }, this);
             }
@@ -403,7 +409,7 @@ function ChatComponent({ currentRole = '' }) {
                     content: content.text
                 }, void 0, false, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 302,
+                    lineNumber: 312,
                     columnNumber: 14
                 }, this);
             }
@@ -422,7 +428,7 @@ function ChatComponent({ currentRole = '' }) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                            lineNumber: 311,
+                            lineNumber: 321,
                             columnNumber: 11
                         }, this),
                         isStreaming && msg.position === 'left' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -438,7 +444,7 @@ function ChatComponent({ currentRole = '' }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                            lineNumber: 316,
+                                            lineNumber: 326,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -448,7 +454,7 @@ function ChatComponent({ currentRole = '' }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                            lineNumber: 317,
+                                            lineNumber: 327,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -458,13 +464,13 @@ function ChatComponent({ currentRole = '' }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                            lineNumber: 318,
+                                            lineNumber: 328,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                    lineNumber: 315,
+                                    lineNumber: 325,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -472,19 +478,19 @@ function ChatComponent({ currentRole = '' }) {
                                     children: t('chat.generating')
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                    lineNumber: 320,
+                                    lineNumber: 330,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                            lineNumber: 314,
+                            lineNumber: 324,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 310,
+                    lineNumber: 320,
                     columnNumber: 9
                 }, this);
             }
@@ -510,22 +516,22 @@ function ChatComponent({ currentRole = '' }) {
                                 children: JSON.stringify(content, null, 2)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                lineNumber: 345,
+                                lineNumber: 355,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                            lineNumber: 344,
+                            lineNumber: 354,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                        lineNumber: 343,
+                        lineNumber: 353,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 342,
+                    lineNumber: 352,
                     columnNumber: 9
                 }, this);
             }
@@ -553,22 +559,22 @@ function ChatComponent({ currentRole = '' }) {
                                 children: thinkContentRef.current
                             }, void 0, false, {
                                 fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                lineNumber: 373,
+                                lineNumber: 383,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                            lineNumber: 372,
+                            lineNumber: 382,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                        lineNumber: 371,
+                        lineNumber: 381,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 370,
+                    lineNumber: 380,
                     columnNumber: 9
                 }, this);
             }
@@ -614,7 +620,7 @@ function ChatComponent({ currentRole = '' }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                    lineNumber: 431,
+                                    lineNumber: 441,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -624,7 +630,7 @@ function ChatComponent({ currentRole = '' }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                    lineNumber: 432,
+                                    lineNumber: 442,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -634,31 +640,31 @@ function ChatComponent({ currentRole = '' }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                    lineNumber: 433,
+                                    lineNumber: 443,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                            lineNumber: 430,
+                            lineNumber: 440,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                             children: t('chat.typing', '对方正在输入...')
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                            lineNumber: 435,
+                            lineNumber: 445,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 429,
+                    lineNumber: 439,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                lineNumber: 428,
+                lineNumber: 438,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chatui$2f$core$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -676,13 +682,13 @@ function ChatComponent({ currentRole = '' }) {
                 onQuickReplyClick: isStreaming ? ()=>{} : handleQuickReplyClick
             }, void 0, false, {
                 fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                lineNumber: 439,
+                lineNumber: 449,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-        lineNumber: 426,
+        lineNumber: 436,
         columnNumber: 5
     }, this);
 }

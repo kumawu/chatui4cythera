@@ -3692,13 +3692,13 @@ body {
 }
 
 .markdown-content {
+  color: #fff;
   overflow-wrap: break-word;
   width: 100%;
   margin: 0;
   padding: 0;
   font-size: 16px;
   line-height: 1.6;
-  color: #fff !important;
 }
 
 .markdown-content table {
