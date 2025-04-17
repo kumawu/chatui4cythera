@@ -67,7 +67,17 @@
     "noProtocol": "No protocol information",
     "autoEvents": "Auto Events",
     "onChangeOnly": "Trigger only on change",
-    "scheduled": "Scheduled trigger"
+    "scheduled": "Scheduled trigger",
+    "commands": "Device Commands",
+    "viewCommands": "View commands and operations supported by this device",
+    "commandsTitle": "Device Commands Documentation",
+    "commandsDescription": "Below are all the commands and operations supported by this device. You can control and manage the device through these commands.",
+    "commandsError": "Failed to get device commands",
+    "noCommands": "This device has no available commands",
+    "endpoint": "Endpoint Path",
+    "parameters": "Parameters",
+    "resourceName": "Resource Name",
+    "valueType": "Value Type"
   },
   "quickReplies": {
     "energyAnalyst": {

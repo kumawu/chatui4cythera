@@ -67,7 +67,17 @@
     "noProtocol": "无协议信息",
     "autoEvents": "自动事件",
     "onChangeOnly": "仅在变化时触发",
-    "scheduled": "定时触发"
+    "scheduled": "定时触发",
+    "commands": "设备指令",
+    "viewCommands": "查看该设备支持的指令和操作",
+    "commandsTitle": "设备指令文档",
+    "commandsDescription": "以下是该设备支持的所有指令和操作。您可以通过这些指令控制和管理设备。",
+    "commandsError": "获取设备指令失败",
+    "noCommands": "该设备没有可用的指令",
+    "endpoint": "接口路径",
+    "parameters": "参数",
+    "resourceName": "资源名称",
+    "valueType": "值类型"
   },
   "quickReplies": {
     "energyAnalyst": {

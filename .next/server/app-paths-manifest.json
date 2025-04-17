@@ -1,6 +1,4 @@
 {
-  "/api/chat-bot1/route": "app/api/chat-bot1/route.js",
-  "/api/data-format/route": "app/api/data-format/route.js",
   "/api/device-commands/route": "app/api/device-commands/route.js",
   "/api/devices/route": "app/api/devices/route.js",
   "/dashboard/page": "app/dashboard/page.js",
