@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../../i18n';
 import { Device } from './DeviceGrid';
+import { DeviceCommandsModal } from './DeviceCommandsModal';
 
 // 设备状态标签组件
 interface StatusBadgeProps {
@@ -40,6 +42,8 @@ interface DeviceDetailModalProps {
 // 设备详情弹窗组件
 export const DeviceDetailModal = ({ device, onClose }: DeviceDetailModalProps) => {
   const { t } = useTranslation('translation');
+  const [showCommandsModal, setShowCommandsModal] = useState(false);
+  
   if (!device) return null;
 
   const getProtocolDetails = () => {
@@ -64,6 +68,12 @@ export const DeviceDetailModal = ({ device, onClose }: DeviceDetailModalProps) =
 
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
+      {showCommandsModal && (
+        <DeviceCommandsModal 
+          deviceName={device.name}
+          onClose={() => setShowCommandsModal(false)}
+        />
+      )}
       <div className="bg-gradient-to-br from-indigo-900/90 to-purple-900/90 rounded-2xl p-6 max-w-3xl w-full max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-start mb-6">
           <h2 className="text-2xl font-bold text-white">{t('device.details')}: {device.name}</h2>
@@ -130,6 +140,25 @@ export const DeviceDetailModal = ({ device, onClose }: DeviceDetailModalProps) =
           <div>
             <h3 className="text-lg font-semibold text-white mb-2">{t('device.protocolInfo')}</h3>
             {getProtocolDetails()}
+            
+            {/* 设备指令详情入口 */}
+            <div 
+              className="mt-6 border-2 border-indigo-500/30 rounded-lg p-4 bg-indigo-900/20 hover:bg-indigo-800/30 transition-colors cursor-pointer"
+              onClick={() => setShowCommandsModal(true)}
+            >
+              <h3 className="text-lg font-semibold text-white mb-2">{t('device.commands', '设备指令')}</h3>
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-gray-300">{t('device.viewCommands', '查看该设备支持的指令和操作')}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-indigo-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <span className="px-2 py-1 bg-indigo-700/50 rounded-md text-xs text-white">GET</span>
+                <span className="px-2 py-1 bg-green-700/50 rounded-md text-xs text-white">SET</span>
+                <span className="px-2 py-1 bg-purple-700/50 rounded-md text-xs text-white">RESET</span>
+              </div>
+            </div>
           </div>
 
           {device.autoEvents && device.autoEvents.length > 0 && (

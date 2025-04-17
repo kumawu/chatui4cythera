@@ -103,7 +103,7 @@ export const DashboardContent = () => {
   useEffect(() => {
     const fetchDevices = async () => {
       try {
-        const response = await fetch('/api/devices?offset=0&limit=10');
+        const response = await fetch('/api/devices');
         if (!response.ok) {
           throw new Error(
             t('dashboard.deviceApiError', {
@@ -116,7 +116,15 @@ export const DashboardContent = () => {
         
         const data = await response.json();
         
-        setDeviceData(data);
+        // 将设备数据按创建时间倒序排列并只保留前10条
+        const sortedData = {
+          ...data,
+          devices: [...data.devices]
+            .sort((a, b) => b.created - a.created) // 按创建时间倒序排列
+            .slice(0, 10) // 只保留前10条
+        };
+        
+        setDeviceData(sortedData);
       } catch (error) {
       }
     };

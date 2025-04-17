@@ -8,7 +8,7 @@ export async function GET(request: Request) {
     // 获取查询参数
     const { searchParams } = new URL(request.url);
     const offset = searchParams.get('offset') || '0';
-    const limit = searchParams.get('limit') || '10';
+    const limit = searchParams.get('limit') || '100';
     
     console.log("设备 API 请求:", { offset, limit });
     

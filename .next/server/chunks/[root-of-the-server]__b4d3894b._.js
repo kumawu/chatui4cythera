@@ -1,6 +1,6 @@
 module.exports = {
 
-"[project]/.next-internal/server/app/api/devices/route/actions.js [app-rsc] (server actions loader, ecmascript)": (function(__turbopack_context__) {
+"[project]/.next-internal/server/app/api/device-commands/route/actions.js [app-rsc] (server actions loader, ecmascript)": (function(__turbopack_context__) {
 
 var { g: global, __dirname, m: module, e: exports } = __turbopack_context__;
 {
@@ -53,7 +53,7 @@ const mod = __turbopack_context__.x("next/dist/server/app-render/after-task-asyn
 
 module.exports = mod;
 }}),
-"[project]/src/app/api/devices/route.ts [app-route] (ecmascript)": ((__turbopack_context__) => {
+"[project]/src/app/api/device-commands/route.ts [app-route] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
 var { g: global, __dirname } = __turbopack_context__;
@@ -63,43 +63,34 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/server.js [app-route] (ecmascript)");
 ;
-// 设备 API 配置
-const DEVICE_API_URL = 'http://10.222.96.88:4000/core-metadata/api/v3/device/all';
 async function GET(request) {
     try {
         // 获取查询参数
         const { searchParams } = new URL(request.url);
-        const offset = searchParams.get('offset') || '0';
-        const limit = searchParams.get('limit') || '100';
-        console.log("设备 API 请求:", {
-            offset,
-            limit
-        });
-        // 构建 URL
-        const apiUrl = `${DEVICE_API_URL}?offset=${offset}&limit=${limit}`;
-        // 发送请求到设备 API
-        const deviceResponse = await fetch(apiUrl, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }
-        });
-        if (!deviceResponse.ok) {
-            const errorData = await deviceResponse.json();
-            console.error("设备 API 错误:", errorData);
-            throw new Error(`设备 API 请求失败: ${deviceResponse.status} ${deviceResponse.statusText}`);
+        const deviceName = searchParams.get('deviceName');
+        if (!deviceName) {
+            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                error: '设备名称不能为空'
+            }, {
+                status: 400
+            });
         }
-        // 处理设备 API 响应
-        const data = await deviceResponse.json();
-        console.log("设备 API 响应:", data);
-        // 返回设备数据
+        console.log("设备指令 API 请求:", {
+            deviceName
+        });
+        // 调用外部 API
+        const apiUrl = `http://10.222.96.88:4000/core-command/api/v3/device/name/${encodeURIComponent(deviceName)}`;
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`外部 API 请求失败: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("设备指令 API 响应:", data);
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(data);
     } catch (error) {
-        console.error('设备 API 错误:', error);
+        console.error("设备指令 API 错误:", error);
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-            error: '处理请求时出错',
-            message: error instanceof Error ? error.message : '未知错误'
+            error: `获取设备指令失败: ${error}`
         }, {
             status: 500
         });
@@ -109,4 +100,4 @@ async function GET(request) {
 
 };
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__e048aeff._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__b4d3894b._.js.map

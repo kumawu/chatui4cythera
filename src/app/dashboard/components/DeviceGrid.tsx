@@ -30,23 +30,15 @@ export interface Device {
   created?: number;
   modified?: number;
 }
-
 export interface DeviceData {
   apiVersion: string;
   statusCode: number;
   totalCount: number;
   devices: Device[];
 }
-
 interface DeviceGridProps {
   deviceData: DeviceData;
 }
-
-
-
-
-
-
 
 // 设备网格组件
 export const DeviceGrid = ({ deviceData }: DeviceGridProps) => {
