@@ -1,0 +1,90 @@
+{
+  "welcome": "欢迎来到仪表盘！",
+  "sidebar": {
+    "home": "首页",
+    "settings": "设置",
+    "chatWith": "与{{name}}对话",
+    "back": "返回",
+    "latestMessages": "最新消息",
+    "assistantNames": {
+      "energyAnalyst": "数字能效分析师",
+      "envSpecialist": "数字环境专员",
+      "healthManager": "数字设备健康主管",
+      "coordinator": "数字综合运营协调员"
+    },
+    "descriptions": {
+      "energyAnalyst": "分析能耗数据，监控设备能耗，标记异常并助力优化",
+      "envSpecialist": "监控冷库温湿度、光照，异常报警并优化照明使用",
+      "healthManager": "基于空调能耗识别重大异常，预警设备故障",
+      "coordinator": "整合多源数据，提供基础运营状态监控仪表盘"
+    },
+    "statuses": {
+      "energyAnalyst": "分析中 - 分析能耗数据",
+      "envSpecialist": "监控中 - 监控冷库",
+      "healthManager": "预警中 - 预警设备故障",
+      "coordinator": "分析中 - 整合多源数据"
+    }
+  },
+  "chat": {
+    "send": "发送",
+    "placeholder": "请输入你的消息...",
+    "typing": "对方正在输入...",
+    "generating": "正在生成响应"
+  },
+  "dashboard": {
+    "overview": "数据概览",
+    "totalElectricity": "总用电量",
+    "abnormalTrend": "较正常值异常增高42%",
+    "maxAbnormalDate": "最大异常日期",
+    "monthlySaving": "每月预计节约电量",
+    "deviceApiError": "设备 API 请求失败: {{status}} {{statusText}}",
+    "msg": {
+      "energyAnalyst": "数字能效分析师：能源消耗数据分析报告已生成，本月节能率提升12%",
+      "envSpecialist": "数字环境专员：冷库温度波动超出预设范围，建议检查制冷系统",
+      "security": "数字安防监控员：监控到3号区域有未授权人员活动，已自动记录",
+      "healthManager": "数字设备健康主管：2号生产线设备预测性维护提醒，建议下周检修",
+      "coordinator": "数字综合运营协调员：已整合各部门数据，月度运营报告可在系统查看",
+      "energyAnalyst2": "数字能效分析师：发现能耗异常峰值，可能存在设备效率问题",
+      "envSpecialist2": "数字环境专员：环境监测系统显示空气质量指数良好，符合生产标准"
+    }
+  },
+  "device": {
+    "list": "设备列表",
+    "total": "共 {{count}} 个设备",
+    "service": "服务",
+    "noData": "暂无设备数据",
+    "checkConnection": "请检查设备连接或刷新页面",
+    "details": "设备详情",
+    "basicInfo": "基本信息",
+    "name": "名称",
+    "status": "状态",
+    "description": "描述",
+    "profile": "配置文件",
+    "labels": "标签",
+    "created": "创建时间",
+    "unknown": "未知",
+    "protocolInfo": "协议信息",
+    "noProtocol": "无协议信息",
+    "autoEvents": "自动事件",
+    "onChangeOnly": "仅在变化时触发",
+    "scheduled": "定时触发"
+  },
+  "quickReplies": {
+    "energyAnalyst": {
+      "lighting": "💡照明系统是不是开得太久了？有节省空间吗？🤔",
+      "ac": "💨这几天挺热🌡️，我想知道空调用电是不是超了？🤔"
+    },
+    "envSpecialist": {
+      "coldStorage": "📡冷库环境最近波动大，是不是外面太热？",
+      "alerts": "🚨有没有严重告警要立即处理？"
+    },
+    "healthManager": {
+      "trend": "🔍调出最近3天空调用电趋势，我看看变化。",
+      "abnormal": "🛠有没有哪台空调的能耗曲线特别奇怪？"
+    },
+    "coordinator": {
+      "status": "🔎 今天整体状况如何？",
+      "trend": "📈 最近总能耗趋势怎么样？"
+    }
+  }
+}

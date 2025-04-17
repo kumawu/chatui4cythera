@@ -1,19 +1,13 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion } from "framer-motion";
 import dynamic from 'next/dynamic';
+import '../../../i18n';
+import { getAssistantNames, getAssistantDescriptions, getAssistantStatuses } from '../../../config/assistants';
 
 const ChatComponent = dynamic<{ currentRole?: string }>(() => import('./ChatComponent').then(mod => mod.default), {
   ssr: false
 });
-
-// 助手名称常量
-export const ASSISTANT_NAMES = [
-  '数字能效分析师',
-  '数字环境专员',
-  // '数字安防监控员',
-  '数字设备健康主管',
-  '数字综合运营协调员',
-];
 
 interface SidebarProps {
   activeChat: number | null;
@@ -42,6 +36,9 @@ interface AssistantListProps {
 }
 
 const AssistantList = ({ messages, setActiveChat }: AssistantListProps) => {
+  const { t, i18n } = useTranslation('translation');
+  // 使用全局配置中的助手名称
+  const ASSISTANT_NAMES = getAssistantNames();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -50,20 +47,9 @@ const AssistantList = ({ messages, setActiveChat }: AssistantListProps) => {
     >
       <div className="flex flex-col gap-4">
         {Array.from({ length: 4 }).map((_, i) => {
-          const descriptions = [
-            "分析能耗数据，监控设备能耗，标记异常并助力优化",
-            "监控冷库温湿度、光照，异常报警并优化照明使用",
-            // "实时监控单摄像头画面，检测运动及人员存在",
-            "基于空调能耗识别重大异常，预警设备故障",
-            "整合多源数据，提供基础运营状态监控仪表盘",
-          ];
-          const statuses = [
-            "分析中 - 分析能耗数据",
-            "监控中 - 监控冷库",
-            // "监控中 - 监控单摄像头画面",
-            "预警中 - 预警设备故障",
-            "分析中 - 整合多源数据",
-          ];
+          // 使用全局配置中的助手描述和状态
+          const descriptions = getAssistantDescriptions();
+          const statuses = getAssistantStatuses();
           
           return (
             <motion.div
@@ -100,7 +86,7 @@ const AssistantList = ({ messages, setActiveChat }: AssistantListProps) => {
         })}
       </div>
       <div className="mt-6">
-        <h2 className="text-xl font-bold text-white mb-4">最新消息</h2>
+        <h2 className="text-xl font-bold text-white mb-4">{t('sidebar.latestMessages', '最新消息')}</h2>
         <div className="h-58 overflow-hidden relative">
           <div className="animate-scroll space-y-2">
             {messages.map((msg, i) => (
@@ -128,6 +114,9 @@ interface ChatViewProps {
 }
 
 const ChatView = ({ activeChat, setActiveChat }: ChatViewProps) => {
+  const { t } = useTranslation('translation');
+  // 使用全局配置中的助手名称
+  const ASSISTANT_NAMES = getAssistantNames();
   return (
     <motion.div
       className="h-full flex flex-col"
@@ -143,10 +132,10 @@ const ChatView = ({ activeChat, setActiveChat }: ChatViewProps) => {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
           </svg>
-          返回
+          {t('sidebar.back', '返回')}
         </button>
-        <h2 className="text-2xl font-bold text-white bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent max-w-[50%] truncate md:max-w-none md:whitespace-normal">
-          与{activeChat ? ASSISTANT_NAMES[activeChat - 1] : ''}对话
+        <h2 className="text-2xl font-bold text-white bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent max-w-[50%] truncate md:max-w-none md:whitespace-normal ml-1">
+          {t('sidebar.chatWith', { name: activeChat ? ASSISTANT_NAMES[activeChat - 1] : '' })}
         </h2>
         <div className="w-8"></div>
       </div>

@@ -11,6 +11,9 @@ __turbopack_context__.s({
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$marked$2f$lib$2f$marked$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/marked/lib/marked.esm.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$i18n$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/i18n.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_context__.i("[project]/node_modules/react-i18next/dist/es/index.js [app-client] (ecmascript) <module evaluation>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$useTranslation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-i18next/dist/es/useTranslation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chatui$2f$core$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@chatui/core/dist/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$ThinkContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/dashboard/ThinkContext.tsx [app-client] (ecmascript)");
 ;
@@ -27,6 +30,8 @@ const Sync = ({ isDone, thinkTime, children })=>{
 };
 _c = Sync;
 'use client';
+;
+;
 ;
 ;
 // 配置marked支持表格等复杂markdown元素
@@ -79,6 +84,7 @@ const ROLE_QUICK_REPLIES = {
 const DEFAULT_QUICK_REPLIES = [];
 function ChatComponent({ currentRole = '数字能效分析师' }) {
     _s();
+    const { t } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$useTranslation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTranslation"])('translation');
     const { messages, appendMsg, updateMsg } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chatui$2f$core$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMessages"])([]);
     const { setThinkData } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$ThinkContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useThinkContext"])();
     const [isTyping, setIsTyping] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
@@ -319,7 +325,7 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                        lineNumber: 312,
+                                        lineNumber: 315,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -329,7 +335,7 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                        lineNumber: 313,
+                                        lineNumber: 316,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -339,13 +345,13 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                        lineNumber: 314,
+                                        lineNumber: 317,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                lineNumber: 311,
+                                lineNumber: 314,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -353,18 +359,18 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                 children: "正在生成响应..."
                             }, void 0, false, {
                                 fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                lineNumber: 316,
+                                lineNumber: 319,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                        lineNumber: 310,
+                        lineNumber: 313,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 309,
+                    lineNumber: 312,
                     columnNumber: 9
                 }, this);
             }
@@ -373,7 +379,7 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                     content: content.text
                 }, void 0, false, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 323,
+                    lineNumber: 326,
                     columnNumber: 14
                 }, this);
             }
@@ -389,7 +395,7 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                             }
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                            lineNumber: 332,
+                            lineNumber: 335,
                             columnNumber: 11
                         }, this),
                         isStreaming && msg.position === 'left' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -405,7 +411,7 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                            lineNumber: 337,
+                                            lineNumber: 340,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -415,7 +421,7 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                            lineNumber: 338,
+                                            lineNumber: 341,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -425,13 +431,13 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                            lineNumber: 339,
+                                            lineNumber: 342,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                    lineNumber: 336,
+                                    lineNumber: 339,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -439,19 +445,19 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                     children: "正在生成..."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                    lineNumber: 341,
+                                    lineNumber: 344,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                            lineNumber: 335,
+                            lineNumber: 338,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 331,
+                    lineNumber: 334,
                     columnNumber: 9
                 }, this);
             }
@@ -477,22 +483,22 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                 children: JSON.stringify(content, null, 2)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                lineNumber: 366,
+                                lineNumber: 369,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                            lineNumber: 365,
+                            lineNumber: 368,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                        lineNumber: 364,
+                        lineNumber: 367,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 363,
+                    lineNumber: 366,
                     columnNumber: 9
                 }, this);
             }
@@ -520,22 +526,22 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                 children: thinkContentRef.current
                             }, void 0, false, {
                                 fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                lineNumber: 394,
+                                lineNumber: 397,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                            lineNumber: 393,
+                            lineNumber: 396,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                        lineNumber: 392,
+                        lineNumber: 395,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 391,
+                    lineNumber: 394,
                     columnNumber: 9
                 }, this);
             }
@@ -584,7 +590,7 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                    lineNumber: 455,
+                                    lineNumber: 458,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -594,7 +600,7 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                    lineNumber: 456,
+                                    lineNumber: 459,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -604,31 +610,31 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                                    lineNumber: 457,
+                                    lineNumber: 460,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                            lineNumber: 454,
+                            lineNumber: 457,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                            children: "对方正在输入..."
+                            children: t('chat.typing', '对方正在输入...')
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                            lineNumber: 459,
+                            lineNumber: 462,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                    lineNumber: 453,
+                    lineNumber: 456,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                lineNumber: 452,
+                lineNumber: 455,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chatui$2f$core$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -638,26 +644,27 @@ function ChatComponent({ currentRole = '数字能效分析师' }) {
                 messages: messages,
                 renderMessageContent: renderMessageContent,
                 onSend: isStreaming ? ()=>{} : handleSend,
-                locale: "zh-CN",
-                placeholder: isStreaming ? "正在生成响应..." : "请输入...",
+                locale: "en",
+                placeholder: isStreaming ? t('chat.placeholder') : t('chat.placeholder'),
                 ref: chatRef,
                 toolbar: [],
                 quickReplies: isStreaming ? [] : getQuickRepliesByRole(),
                 onQuickReplyClick: isStreaming ? ()=>{} : handleQuickReplyClick
             }, void 0, false, {
                 fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-                lineNumber: 463,
+                lineNumber: 466,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/dashboard/components/ChatComponent.tsx",
-        lineNumber: 450,
+        lineNumber: 453,
         columnNumber: 5
     }, this);
 }
-_s(ChatComponent, "ghwscTqYygpxWe7nlogZOXoxSw0=", false, function() {
+_s(ChatComponent, "z/i/4X2iCeoX1d/5v8SR1520EzM=", false, function() {
     return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$useTranslation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTranslation"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$chatui$2f$core$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMessages"],
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$ThinkContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useThinkContext"]
     ];

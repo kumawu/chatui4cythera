@@ -14,6 +14,10 @@ const Sync: React.FC<SyncProps> = ({ isDone, thinkTime, children }) => {
 'use client';
 import { marked } from 'marked';
 import { useEffect } from 'react';
+import '../../../i18n';
+import { useTranslation } from 'react-i18next';
+import { getQuickRepliesByRole, type QuickReply } from '../../../config/quickReplies';
+import { getAssistantNames } from '../../../config/assistants';
 
 // 配置marked支持表格等复杂markdown元素
 marked.setOptions({
@@ -37,40 +41,14 @@ interface Message {
   loading?: boolean; // 添加 loading 属性
 }
 
-interface QuickReply {
-  name: string;
-  isNew?: boolean;
-  isHighlight?: boolean;
-}
-
-// 根据不同角色定义快速回复选项
-const ROLE_QUICK_REPLIES: Record<string, QuickReply[]> = {
-  '数字能效分析师': [
-    {name: '💡照明系统是不是开得太久了？有节省空间吗？🤔'},
-    {name: '💨这几天挺热🌡️，我想知道空调用电是不是超了？🤔'}
-  ],
-  '数字环境专员': [
-    { name: '📡冷库环境最近波动大，是不是外面太热？'},
-    { name: '🚨有没有严重告警要立即处理？'}
-  ],
-  '数字设备健康主管': [
-    {name: '🔍调出最近3天空调用电趋势，我看看变化。'},
-    {name: '🛠有没有哪台空调的能耗曲线特别奇怪？'}
-  ],
-  '数字综合运营协调员': [
-    {name: '🔎 今天整体状况如何？'},
-    {name: '📈 最近总能耗趋势怎么样？'},
-  ]
-};
-
-// 默认快速回复选项
-const DEFAULT_QUICK_REPLIES: QuickReply[] = [];
+// 已在全局配置文件中定义 QuickReply 接口和快速回复选项
 
 interface ChatComponentProps {
   currentRole?: string;
 }
 
-export default function ChatComponent({ currentRole = '数字能效分析师' }: ChatComponentProps) {
+export default function ChatComponent({ currentRole = '' }: ChatComponentProps) {
+  const { t } = useTranslation('translation');
   const { messages, appendMsg, updateMsg } = useMessages([]);
   const { setThinkData } = useThinkContext();
   const [isTyping, setIsTyping] = useState(false);
@@ -109,7 +87,7 @@ export default function ChatComponent({ currentRole = '数字能效分析师' }:
             return;
           }
         } catch (e) {
-          console.log('直接解析失败，尝试使用 DSL 解析器');
+          console.log('直接解析失败');
         }
       } catch (error) {
         console.error('Think内容更新错误:', error);
@@ -141,23 +119,20 @@ export default function ChatComponent({ currentRole = '数字能效分析师' }:
         // 根据当前角色选择对应的 chatBot API
         let chatBot = '/api/chat-bot1'; // 默认值
         
-        // 根据 currentRole 来选择不同的 API 端点
-        switch (currentRole) {
-          case '数字能效分析师':
-            chatBot = '/api/chat-bot1';
-            break;
-          case '数字环境专员':
-            chatBot = '/api/chat-bot2';
-            break;
-          case '数字设备健康主管':
-            chatBot = '/api/chat-bot3';
-            break;
-          case '数字综合运营协调员':
-            chatBot = '/api/chat-bot4';
-            break;
-          default:
-            chatBot = '/api/chat-bot4';
-            break;
+        // 获取当前语言的助手名称数组
+        const assistantNames = getAssistantNames();
+        
+        // 根据助手名称选择对应的API端点
+        if (currentRole === assistantNames[0]) {
+          chatBot = '/api/chat-bot1'; // 数字能效分析师
+        } else if (currentRole === assistantNames[1]) {
+          chatBot = '/api/chat-bot2'; // 数字环境专员
+        } else if (currentRole === assistantNames[2]) {
+          chatBot = '/api/chat-bot3'; // 数字设备健康主管
+        } else if (currentRole === assistantNames[3]) {
+          chatBot = '/api/chat-bot4'; // 数字综合运营协调员
+        } else {
+          chatBot = '/api/chat-bot4'; // 默认
         }
         
         console.log(`当前角色: ${currentRole}, 使用 API: ${chatBot}`);
@@ -307,13 +282,13 @@ export default function ChatComponent({ currentRole = '数字能效分析师' }:
       console.log('显示 loading 指示器', msg);
       return (
         <Bubble>
-          <div className="flex items-center space-x-2 p-2">
+          <div className="flex items-center space-x-2 p-4">
             <div className="flex space-x-1">
               <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" style={{ animationDelay: '0ms' }}></div>
               <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" style={{ animationDelay: '300ms' }}></div>
               <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" style={{ animationDelay: '600ms' }}></div>
             </div>
-            <span className="text-sm text-indigo-300">正在生成响应...</span>
+            <span className="text-sm text-indigo-300 p-2">{t('chat.generating')}</span>
           </div>
         </Bubble>
       );
@@ -328,7 +303,7 @@ export default function ChatComponent({ currentRole = '数字能效分析师' }:
       const html = marked.parse(text);
       
       return (
-        <div className="markdown-content p-6 bg-white/5 rounded-lg">
+        <div style={{ padding: '0.8rem' }} className="markdown-content bg-white/5 rounded-lg">
           <div dangerouslySetInnerHTML={{ __html: html }} />
 
           {isStreaming && msg.position === 'left' && (
@@ -338,7 +313,7 @@ export default function ChatComponent({ currentRole = '数字能效分析师' }:
                 <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" style={{ animationDelay: '300ms' }}></div>
                 <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" style={{ animationDelay: '600ms' }}></div>
               </div>
-              <span className="text-sm text-indigo-300">正在生成...</span>
+              <span className="text-sm text-indigo-300">{t('chat.generating')}</span>
             </div>
           )}
         </div>
@@ -441,13 +416,10 @@ export default function ChatComponent({ currentRole = '数字能效分析师' }:
     }
   }
 
-  // 根据当前角色获取对应的快速回复选项
-  const getQuickRepliesByRole = () => {
-    return ROLE_QUICK_REPLIES[currentRole] || DEFAULT_QUICK_REPLIES;
-  };
+  // 使用全局配置文件中的函数获取快速回复选项
 
   return (
-    <div className="h-full flex flex-col bg-transparent">
+    <div className="h-full flex flex-col bg-transparent p-4">
       {isTyping && !isStreaming && (
         <div className="px-4 py-2 text-xs text-gray-500">
           <div className="flex items-center">
@@ -456,7 +428,7 @@ export default function ChatComponent({ currentRole = '数字能效分析师' }:
               <div className="w-1.5 h-1.5 rounded-full bg-gray-400 animate-pulse" style={{ animationDelay: '300ms' }}></div>
               <div className="w-1.5 h-1.5 rounded-full bg-gray-400 animate-pulse" style={{ animationDelay: '600ms' }}></div>
             </div>
-            <span>对方正在输入...</span>
+            <span>{t('chat.typing', '对方正在输入...')}</span>
           </div>
         </div>
       )}
@@ -465,11 +437,11 @@ export default function ChatComponent({ currentRole = '数字能效分析师' }:
         messages={messages}
         renderMessageContent={renderMessageContent}
         onSend={isStreaming ? () => {} : handleSend} // 流式响应过程中禁用发送功能
-        locale="zh-CN"
-        placeholder={isStreaming ? "正在生成响应..." : "请输入..."}
+        locale="en"
+        placeholder={isStreaming ? t('chat.placeholder') : t('chat.placeholder')}
         ref={chatRef}
         toolbar={[]}
-        quickReplies={isStreaming ? [] : getQuickRepliesByRole()} // 流式响应过程中隐藏快捷回复
+        quickReplies={isStreaming ? [] : getQuickRepliesByRole(currentRole)} // 流式响应过程中隐藏快捷回复
         onQuickReplyClick={isStreaming ? () => {} : handleQuickReplyClick} // 流式响应过程中禁用快捷回复功能
       />
     </div>

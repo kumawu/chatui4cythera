@@ -808,8 +808,11 @@ __turbopack_context__.s({
     "Sidebar": (()=>Sidebar)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_context__.i("[project]/node_modules/react-i18next/dist/es/index.js [app-ssr] (ecmascript) <module evaluation>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$useTranslation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-i18next/dist/es/useTranslation.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$shared$2f$lib$2f$app$2d$dynamic$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/shared/lib/app-dynamic.js [app-ssr] (ecmascript)");
+;
 ;
 ;
 ;
@@ -840,19 +843,19 @@ const Sidebar = ({ activeChat, setActiveChat, messages, sidebarWidth })=>{
             setActiveChat: setActiveChat
         }, void 0, false, {
             fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-            lineNumber: 30,
+            lineNumber: 31,
             columnNumber: 9
         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ChatView, {
             activeChat: activeChat,
             setActiveChat: setActiveChat
         }, void 0, false, {
             fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-            lineNumber: 32,
+            lineNumber: 33,
             columnNumber: 9
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-        lineNumber: 28,
+        lineNumber: 29,
         columnNumber: 5
     }, this);
 };
@@ -912,12 +915,12 @@ const AssistantList = ({ messages, setActiveChat })=>{
                                         className: "w-full h-full object-cover"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                                        lineNumber: 81,
+                                        lineNumber: 82,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                                    lineNumber: 80,
+                                    lineNumber: 81,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -928,7 +931,7 @@ const AssistantList = ({ messages, setActiveChat })=>{
                                             children: ASSISTANT_NAMES[i]
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                                            lineNumber: 88,
+                                            lineNumber: 89,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -936,7 +939,7 @@ const AssistantList = ({ messages, setActiveChat })=>{
                                             children: descriptions[i]
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                                            lineNumber: 89,
+                                            lineNumber: 90,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -946,7 +949,7 @@ const AssistantList = ({ messages, setActiveChat })=>{
                                                     className: `w-2 h-2 rounded-full ${i % 2 === 0 ? 'bg-green-500' : 'bg-yellow-500'}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                                                    lineNumber: 91,
+                                                    lineNumber: 92,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -954,36 +957,36 @@ const AssistantList = ({ messages, setActiveChat })=>{
                                                     children: statuses[i]
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                                                    lineNumber: 94,
+                                                    lineNumber: 95,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                                            lineNumber: 90,
+                                            lineNumber: 91,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                                    lineNumber: 87,
+                                    lineNumber: 88,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                            lineNumber: 76,
+                            lineNumber: 77,
                             columnNumber: 15
                         }, this)
                     }, i, false, {
                         fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                        lineNumber: 69,
+                        lineNumber: 70,
                         columnNumber: 13
                     }, this);
                 })
             }, void 0, false, {
                 fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                lineNumber: 51,
+                lineNumber: 52,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -994,7 +997,7 @@ const AssistantList = ({ messages, setActiveChat })=>{
                         children: "最新消息"
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                        lineNumber: 103,
+                        lineNumber: 104,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1007,7 +1010,7 @@ const AssistantList = ({ messages, setActiveChat })=>{
                                         children: msg
                                     }, i, false, {
                                         fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 108,
                                         columnNumber: 15
                                     }, this)),
                                 messages.map((msg, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1015,34 +1018,35 @@ const AssistantList = ({ messages, setActiveChat })=>{
                                         children: msg
                                     }, `dup-${i}`, false, {
                                         fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                                        lineNumber: 113,
+                                        lineNumber: 114,
                                         columnNumber: 15
                                     }, this))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                            lineNumber: 105,
+                            lineNumber: 106,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                        lineNumber: 104,
+                        lineNumber: 105,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                lineNumber: 102,
+                lineNumber: 103,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-        lineNumber: 46,
+        lineNumber: 47,
         columnNumber: 5
     }, this);
 };
 const ChatView = ({ activeChat, setActiveChat })=>{
+    const { t } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$useTranslation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useTranslation"])('translation');
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
         className: "h-full flex flex-col",
         initial: {
@@ -1073,44 +1077,42 @@ const ChatView = ({ activeChat, setActiveChat })=>{
                                     clipRule: "evenodd"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                                    lineNumber: 144,
+                                    lineNumber: 146,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                                lineNumber: 143,
+                                lineNumber: 145,
                                 columnNumber: 11
                             }, this),
                             "返回"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                        lineNumber: 139,
+                        lineNumber: 141,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                         className: "text-2xl font-bold text-white bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent max-w-[50%] truncate md:max-w-none md:whitespace-normal",
-                        children: [
-                            "与",
-                            activeChat ? ASSISTANT_NAMES[activeChat - 1] : '',
-                            "对话"
-                        ]
-                    }, void 0, true, {
+                        children: t('sidebar.chatWith', {
+                            name: activeChat ? ASSISTANT_NAMES[activeChat - 1] : ''
+                        })
+                    }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                        lineNumber: 148,
+                        lineNumber: 150,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "w-8"
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                        lineNumber: 151,
+                        lineNumber: 153,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                lineNumber: 138,
+                lineNumber: 140,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1119,18 +1121,18 @@ const ChatView = ({ activeChat, setActiveChat })=>{
                     currentRole: ASSISTANT_NAMES[activeChat - 1]
                 }, activeChat, false, {
                     fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                    lineNumber: 154,
+                    lineNumber: 156,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-                lineNumber: 153,
+                lineNumber: 155,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/dashboard/components/Sidebar.tsx",
-        lineNumber: 132,
+        lineNumber: 134,
         columnNumber: 5
     }, this);
 };
@@ -1963,12 +1965,15 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_context__.i("[project]/node_modules/react-i18next/dist/es/index.js [app-ssr] (ecmascript) <module evaluation>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$useTranslation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-i18next/dist/es/useTranslation.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$ThinkContext$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/dashboard/ThinkContext.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$components$2f$CardGrid$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/dashboard/components/CardGrid.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$components$2f$EChartComponent$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/dashboard/components/EChartComponent.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$components$2f$Sidebar$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/dashboard/components/Sidebar.tsx [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$dashboard$2f$components$2f$DeviceGrid$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/dashboard/components/DeviceGrid.tsx [app-ssr] (ecmascript)");
+;
 ;
 ;
 ;
@@ -1987,21 +1992,48 @@ const DashboardContent = ()=>{
     // 仪表板状态
     const [cardData, setCardData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([
         {
-            "title": "总用电量",
-            "value": "1880 kWh",
-            "trend": "较正常值异常增高42%"
+            title: '总用电量',
+            value: "1880 kWh",
+            trend: '较正常值异常增高42%'
         },
         {
-            "title": "最大异常日期",
-            "value": "2025-04-11"
+            title: '最大异常日期',
+            value: "2025-04-11"
         },
         {
-            "title": "每月预计节约电量",
-            "value": "120 kWh"
+            title: '每月预计节约电量',
+            value: "120 kWh"
         }
     ]);
+    const { t, i18n } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$useTranslation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useTranslation"])('translation');
+    // 多语言内容初始化
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        setCardData([
+            {
+                title: t('dashboard.totalElectricity', '总用电量'),
+                value: "1880 kWh",
+                trend: t('dashboard.abnormalTrend', '较正常值异常增高42%')
+            },
+            {
+                title: t('dashboard.maxAbnormalDate', '最大异常日期'),
+                value: "2025-04-11"
+            },
+            {
+                title: t('dashboard.monthlySaving', '每月预计节约电量'),
+                value: "120 kWh"
+            }
+        ]);
+    }, [
+        i18n.language
+    ]);
     const [chartData, setChartData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [dashboardTitle, setDashboardTitle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("数据概览");
+    // 多语言内容初始化
+    const [dashboardTitle, setDashboardTitle] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('数据概览');
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        setDashboardTitle(t('dashboard.overview', '数据概览'));
+    }, [
+        i18n.language
+    ]);
     // 设备数据状态
     const [deviceData, setDeviceData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
         apiVersion: "v3",
@@ -2015,7 +2047,11 @@ const DashboardContent = ()=>{
             try {
                 const response = await fetch('/api/devices?offset=0&limit=10');
                 if (!response.ok) {
-                    throw new Error(`设备 API 请求失败: ${response.status} ${response.statusText}`);
+                    throw new Error(t('dashboard.deviceApiError', {
+                        status: response.status,
+                        statusText: response.statusText,
+                        defaultValue: `Device API request failed: ${response.status} ${response.statusText}`
+                    }));
                 }
                 const data = await response.json();
                 console.log('从 API 获取的设备数据:', data);
@@ -2030,13 +2066,26 @@ const DashboardContent = ()=>{
     const [sidebarWidth] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(320);
     const [isChatActive, setIsChatActive] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false); // 添加聊天模式状态
     const [messages, setMessages] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([
-        "数字能效分析师：能源消耗数据分析报告已生成，本月节能率提升12%",
-        "数字环境专员：冷库温度波动超出预设范围，建议检查制冷系统",
-        "数字安防监控员：监控到3号区域有未授权人员活动，已自动记录",
-        "数字设备健康主管：2号生产线设备预测性维护提醒，建议下周检修",
-        "数字综合运营协调员：已整合各部门数据，月度运营报告可在系统查看",
-        "数字能效分析师：发现能耗异常峰值，可能存在设备效率问题",
-        "数字环境专员：环境监测系统显示空气质量指数良好，符合生产标准"
+        '数字能效分析师：能源消耗数据分析报告已生成，本月节能率提升12%',
+        '数字环境专员：冷库温度波动超出预设范围，建议检查制冷系统',
+        '数字安防监控员：监控到3号区域有未授权人员活动，已自动记录',
+        '数字设备健康主管：2号生产线设备预测性维护提醒，建议下周检修',
+        '数字综合运营协调员：已整合各部门数据，月度运营报告可在系统查看',
+        '数字能效分析师：发现能耗异常峰值，可能存在设备效率问题',
+        '数字环境专员：环境监测系统显示空气质量指数良好，符合生产标准'
+    ]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
+        setMessages([
+            t('dashboard.msg.energyAnalyst', '数字能效分析师：能源消耗数据分析报告已生成，本月节能率提升12%'),
+            t('dashboard.msg.envSpecialist', '数字环境专员：冷库温度波动超出预设范围，建议检查制冷系统'),
+            t('dashboard.msg.security', '数字安防监控员：监控到3号区域有未授权人员活动，已自动记录'),
+            t('dashboard.msg.healthManager', '数字设备健康主管：2号生产线设备预测性维护提醒，建议下周检修'),
+            t('dashboard.msg.coordinator', '数字综合运营协调员：已整合各部门数据，月度运营报告可在系统查看'),
+            t('dashboard.msg.energyAnalyst2', '数字能效分析师：发现能耗异常峰值，可能存在设备效率问题'),
+            t('dashboard.msg.envSpecialist2', '数字环境专员：环境监测系统显示空气质量指数良好，符合生产标准')
+        ]);
+    }, [
+        i18n.language
     ]);
     const [activeChat, setActiveChat] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     // 当 activeChat 改变时，更新聊天模式状态
@@ -2143,7 +2192,7 @@ const DashboardContent = ()=>{
                         children: dashboardTitle
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 220,
+                        lineNumber: 263,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2152,12 +2201,12 @@ const DashboardContent = ()=>{
                             cardData: cardData
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                            lineNumber: 224,
+                            lineNumber: 267,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 223,
+                        lineNumber: 266,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2166,12 +2215,12 @@ const DashboardContent = ()=>{
                             chartData: chartData
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                            lineNumber: 229,
+                            lineNumber: 272,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 228,
+                        lineNumber: 271,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2180,18 +2229,18 @@ const DashboardContent = ()=>{
                             deviceData: deviceData
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                            lineNumber: 234,
+                            lineNumber: 277,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 233,
+                        lineNumber: 276,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                lineNumber: 219,
+                lineNumber: 262,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2201,7 +2250,7 @@ const DashboardContent = ()=>{
                         className: "absolute inset-y-0 left-1/2 -translate-x-1/2 w-1 h-full bg-white/20 hover:bg-white/40 transition-colors"
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 242,
+                        lineNumber: 285,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2210,18 +2259,18 @@ const DashboardContent = ()=>{
                             className: "w-1 h-4 bg-white/50 rounded-full"
                         }, void 0, false, {
                             fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                            lineNumber: 244,
+                            lineNumber: 287,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                        lineNumber: 243,
+                        lineNumber: 286,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                lineNumber: 239,
+                lineNumber: 282,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2233,18 +2282,18 @@ const DashboardContent = ()=>{
                     sidebarWidth: isChatActive ? 640 : sidebarWidth
                 }, void 0, false, {
                     fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                    lineNumber: 250,
+                    lineNumber: 293,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-                lineNumber: 249,
+                lineNumber: 292,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/dashboard/components/DashboardContent.tsx",
-        lineNumber: 212,
+        lineNumber: 255,
         columnNumber: 5
     }, this);
 };

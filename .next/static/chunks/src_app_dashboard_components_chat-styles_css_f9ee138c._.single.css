@@ -205,4 +205,18 @@
   }
 }
 
+.ChatApp .QuickReplies {
+  padding-left: 1rem;
+  justify-content: flex-start !important;
+}
+
+.ChatApp .QuickReplies .ScrollView-item {
+  margin-left: 0;
+}
+
+.ChatApp .QuickReplies .QuickReply {
+  text-align: left;
+  max-width: 90%;
+}
+
 /*# sourceMappingURL=src_app_dashboard_components_chat-styles_css_f9ee138c._.single.css.map*/

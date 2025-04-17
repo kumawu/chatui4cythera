@@ -3739,5 +3739,19 @@ body {
   }
 }
 
+.ChatApp .QuickReplies {
+  padding-left: 1rem;
+  justify-content: flex-start !important;
+}
+
+.ChatApp .QuickReplies .ScrollView-item {
+  margin-left: 0;
+}
+
+.ChatApp .QuickReplies .QuickReply {
+  text-align: left;
+  max-width: 90%;
+}
+
 
 /*# sourceMappingURL=_0a305e26._.css.map*/

@@ -1,0 +1,90 @@
+{
+  "welcome": "Welcome to the dashboard!",
+  "sidebar": {
+    "home": "Home",
+    "settings": "Settings",
+    "chatWith": "Chat with {{name}}",
+    "back": "Back",
+    "latestMessages": "Latest Messages",
+    "assistantNames": {
+      "energyAnalyst": "Digital Energy Efficiency Analyst",
+      "envSpecialist": "Digital Environmental Specialist",
+      "healthManager": "Digital Device Health Manager",
+      "coordinator": "Digital Operations Coordinator"
+    },
+    "descriptions": {
+      "energyAnalyst": "Analyze energy consumption data, monitor device energy usage, mark anomalies and assist optimization",
+      "envSpecialist": "Monitor cold storage temperature, humidity, and lighting, abnormal alarms and optimize lighting usage",
+      "healthManager": "Identify major anomalies based on AC energy consumption, warn of equipment failures",
+      "coordinator": "Integrate multi-source data, provide basic operational status monitoring dashboard"
+    },
+    "statuses": {
+      "energyAnalyst": "Analyzing - Energy consumption data",
+      "envSpecialist": "Monitoring - Cold storage",
+      "healthManager": "Warning - Equipment failure",
+      "coordinator": "Analyzing - Multi-source data"
+    }
+  },
+  "chat": {
+    "send": "Send",
+    "placeholder": "Type your message...",
+    "typing": "The other party is typing...",
+    "generating": "Generating response"
+  },
+  "dashboard": {
+    "overview": "Overview",
+    "totalElectricity": "Total Electricity Consumption",
+    "abnormalTrend": "Abnormally increased by 42% compared to normal",
+    "maxAbnormalDate": "Max Abnormal Date",
+    "monthlySaving": "Estimated Monthly Saving",
+    "deviceApiError": "Device API request failed: {{status}} {{statusText}}",
+    "msg": {
+      "energyAnalyst": "Energy Analyst: The energy consumption analysis report has been generated, energy saving rate increased by 12% this month",
+      "envSpecialist": "Environmental Specialist: Cold storage temperature fluctuation exceeded preset range, please check refrigeration system",
+      "security": "Security Monitor: Unauthorized activity detected in Area 3, automatically recorded",
+      "healthManager": "Device Health Manager: Predictive maintenance reminder for Line 2 equipment, recommended inspection next week",
+      "coordinator": "Operations Coordinator: Department data integrated, monthly report available in system",
+      "energyAnalyst2": "Energy Analyst: Abnormal energy consumption peak detected, possible equipment efficiency issue",
+      "envSpecialist2": "Environmental Specialist: Air quality index is good, meets production standards"
+    }
+  },
+  "device": {
+    "list": "Device List",
+    "total": "Total {{count}} devices",
+    "service": "Service",
+    "noData": "No device data",
+    "checkConnection": "Please check device connection or refresh page",
+    "details": "Device Details",
+    "basicInfo": "Basic Information",
+    "name": "Name",
+    "status": "Status",
+    "description": "Description",
+    "profile": "Profile",
+    "labels": "Labels",
+    "created": "Created Time",
+    "unknown": "Unknown",
+    "protocolInfo": "Protocol Information",
+    "noProtocol": "No protocol information",
+    "autoEvents": "Auto Events",
+    "onChangeOnly": "Trigger only on change",
+    "scheduled": "Scheduled trigger"
+  },
+  "quickReplies": {
+    "energyAnalyst": {
+      "lighting": "💡Is the lighting system on for too long? Any room for saving?🤔",
+      "ac": "💨It's quite hot these days🌡️, is the AC power consumption exceeding normal?🤔"
+    },
+    "envSpecialist": {
+      "coldStorage": "📡Cold storage environment fluctuating a lot recently, is it too hot outside?",
+      "alerts": "🚨Are there any serious alerts that need immediate attention?"
+    },
+    "healthManager": {
+      "trend": "🔍Show me the AC power consumption trend for the last 3 days.",
+      "abnormal": "🛠Are there any ACs with unusual energy consumption curves?"
+    },
+    "coordinator": {
+      "status": "🔎 How is the overall situation today?",
+      "trend": "📈 How's the recent total energy consumption trend?"
+    }
+  }
+}

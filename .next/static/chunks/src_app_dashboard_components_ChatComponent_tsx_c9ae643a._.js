@@ -6,8 +6,8 @@ var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.v((parentImport) => {
     return Promise.all([
-  "static/chunks/node_modules_0cc7186a._.js",
-  "static/chunks/src_app_dashboard_components_ChatComponent_tsx_3b4fa3eb._.js",
+  "static/chunks/node_modules_83492d68._.js",
+  "static/chunks/src_1cee0bc8._.js",
   {
     "path": "static/chunks/_0a305e26._.css",
     "included": [
