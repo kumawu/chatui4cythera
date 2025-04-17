@@ -6,7 +6,7 @@ import i18n from '../../../i18n';
 
 export const LanguageSwitcher = () => {
   const { i18n: i18nHook } = useTranslation();
-  const [currentLang, setCurrentLang] = useState('zh');
+  const [currentLang, setCurrentLang] = useState('zh-CN');
   
   // 初始化当前语言状态
   useEffect(() => {
@@ -15,7 +15,7 @@ export const LanguageSwitcher = () => {
 
   // 切换语言函数
   const toggleLanguage = () => {
-    const newLang = currentLang === 'zh' ? 'en' : 'zh';
+    const newLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN';
     i18n.changeLanguage(newLang);
     setCurrentLang(newLang);
     console.log('语言已切换为:', newLang);
@@ -30,7 +30,7 @@ export const LanguageSwitcher = () => {
       className="fixed top-4 left-4 z-50 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md 
                  hover:bg-white/20 transition-colors text-white text-sm font-medium flex items-center"
     >
-      {currentLang === 'zh' ? '中文' : 'English'}
+      {currentLang === 'zh-CN' ? '中文' : 'English'}
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
         className="h-4 w-4 ml-1.5" 

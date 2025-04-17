@@ -798,22 +798,22 @@ const mod = __turbopack_context__.x("next/dist/server/app-render/work-async-stor
 
 module.exports = mod;
 }}),
-"[project]/src/locales/en/translation.json (json)": ((__turbopack_context__) => {
+"[project]/src/locales/en-US/translation.json (json)": ((__turbopack_context__) => {
 
 var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.v(JSON.parse("{\"welcome\":\"Welcome to the dashboard!\",\"sidebar\":{\"home\":\"Home\",\"settings\":\"Settings\",\"chatWith\":\"Chat with {{name}}\",\"back\":\"Back\",\"latestMessages\":\"Latest Messages\",\"assistantNames\":{\"energyAnalyst\":\"Digital Energy Efficiency Analyst\",\"envSpecialist\":\"Digital Environmental Specialist\",\"healthManager\":\"Digital Device Health Manager\",\"coordinator\":\"Digital Operations Coordinator\"},\"descriptions\":{\"energyAnalyst\":\"Analyze energy consumption data, monitor device energy usage, mark anomalies and assist optimization\",\"envSpecialist\":\"Monitor cold storage temperature, humidity, and lighting, abnormal alarms and optimize lighting usage\",\"healthManager\":\"Identify major anomalies based on AC energy consumption, warn of equipment failures\",\"coordinator\":\"Integrate multi-source data, provide basic operational status monitoring dashboard\"},\"statuses\":{\"energyAnalyst\":\"Analyzing - Energy consumption data\",\"envSpecialist\":\"Monitoring - Cold storage\",\"healthManager\":\"Warning - Equipment failure\",\"coordinator\":\"Analyzing - Multi-source data\"}},\"chat\":{\"send\":\"Send\",\"placeholder\":\"Type your message...\",\"typing\":\"The other party is typing...\",\"generating\":\"Generating response\"},\"dashboard\":{\"overview\":\"Overview\",\"totalElectricity\":\"Total Electricity Consumption\",\"abnormalTrend\":\"Abnormally increased by 42% compared to normal\",\"maxAbnormalDate\":\"Max Abnormal Date\",\"monthlySaving\":\"Estimated Monthly Saving\",\"deviceApiError\":\"Device API request failed: {{status}} {{statusText}}\",\"msg\":{\"energyAnalyst\":\"Energy Analyst: The energy consumption analysis report has been generated, energy saving rate increased by 12% this month\",\"envSpecialist\":\"Environmental Specialist: Cold storage temperature fluctuation exceeded preset range, please check refrigeration system\",\"security\":\"Security Monitor: Unauthorized activity detected in Area 3, automatically recorded\",\"healthManager\":\"Device Health Manager: Predictive maintenance reminder for Line 2 equipment, recommended inspection next week\",\"coordinator\":\"Operations Coordinator: Department data integrated, monthly report available in system\",\"energyAnalyst2\":\"Energy Analyst: Abnormal energy consumption peak detected, possible equipment efficiency issue\",\"envSpecialist2\":\"Environmental Specialist: Air quality index is good, meets production standards\"}},\"device\":{\"list\":\"Device List\",\"total\":\"Total {{count}} devices\",\"service\":\"Service\",\"noData\":\"No device data\",\"checkConnection\":\"Please check device connection or refresh page\",\"details\":\"Device Details\",\"basicInfo\":\"Basic Information\",\"name\":\"Name\",\"status\":\"Status\",\"description\":\"Description\",\"profile\":\"Profile\",\"labels\":\"Labels\",\"created\":\"Created Time\",\"unknown\":\"Unknown\",\"protocolInfo\":\"Protocol Information\",\"noProtocol\":\"No protocol information\",\"autoEvents\":\"Auto Events\",\"onChangeOnly\":\"Trigger only on change\",\"scheduled\":\"Scheduled trigger\",\"commands\":\"Device Commands\",\"viewCommands\":\"View commands and operations supported by this device\",\"commandsTitle\":\"Device Commands Documentation\",\"commandsDescription\":\"Below are all the commands and operations supported by this device. You can control and manage the device through these commands.\",\"commandsError\":\"Failed to get device commands\",\"noCommands\":\"This device has no available commands\",\"endpoint\":\"Endpoint Path\",\"parameters\":\"Parameters\",\"resourceName\":\"Resource Name\",\"valueType\":\"Value Type\"},\"quickReplies\":{\"energyAnalyst\":{\"lighting\":\"💡Is the lighting system on for too long? Any room for saving?🤔\",\"ac\":\"💨It's quite hot these days🌡️, is the AC power consumption exceeding normal?🤔\"},\"envSpecialist\":{\"coldStorage\":\"📡Cold storage environment fluctuating a lot recently, is it too hot outside?\",\"alerts\":\"🚨Are there any serious alerts that need immediate attention?\"},\"healthManager\":{\"trend\":\"🔍Show me the AC power consumption trend for the last 3 days.\",\"abnormal\":\"🛠Are there any ACs with unusual energy consumption curves?\"},\"coordinator\":{\"status\":\"🔎 How is the overall situation today?\",\"trend\":\"📈 How's the recent total energy consumption trend?\"}}}"));}}),
-"[project]/src/locales/en/common.json (json)": ((__turbopack_context__) => {
+"[project]/src/locales/en-US/common.json (json)": ((__turbopack_context__) => {
 
 var { g: global, __dirname } = __turbopack_context__;
 {
 __turbopack_context__.v(JSON.parse("{\"appName\":\"VisionPro Dashboard\",\"logout\":\"Logout\"}"));}}),
-"[project]/src/locales/zh/translation.json (json)": ((__turbopack_context__) => {
+"[project]/src/locales/zh-CN/translation.json (json)": ((__turbopack_context__) => {
 
 var { g: global, __dirname } = __turbopack_context__;
 {
-__turbopack_context__.v(JSON.parse("{\"welcome\":\"欢迎来到仪表盘！\",\"sidebar\":{\"home\":\"首页\",\"settings\":\"设置\",\"chatWith\":\"与{{name}}对话\",\"back\":\"返回\",\"latestMessages\":\"最新消息\",\"assistantNames\":{\"energyAnalyst\":\"数字能效分析师\",\"envSpecialist\":\"数字环境专员\",\"healthManager\":\"数字设备健康主管\",\"coordinator\":\"数字综合运营协调员\"},\"descriptions\":{\"energyAnalyst\":\"分析能耗数据，监控设备能耗，标记异常并助力优化\",\"envSpecialist\":\"监控冷库温湿度、光照，异常报警并优化照明使用\",\"healthManager\":\"基于空调能耗识别重大异常，预警设备故障\",\"coordinator\":\"整合多源数据，提供基础运营状态监控仪表盘\"},\"statuses\":{\"energyAnalyst\":\"分析中 - 分析能耗数据\",\"envSpecialist\":\"监控中 - 监控冷库\",\"healthManager\":\"预警中 - 预警设备故障\",\"coordinator\":\"分析中 - 整合多源数据\"}},\"chat\":{\"send\":\"发送\",\"placeholder\":\"请输入你的消息...\",\"typing\":\"对方正在输入...\",\"generating\":\"正在生成响应\"},\"dashboard\":{\"overview\":\"数据概览\",\"totalElectricity\":\"总用电量\",\"abnormalTrend\":\"较正常值异常增高42%\",\"maxAbnormalDate\":\"最大异常日期\",\"monthlySaving\":\"每月预计节约电量\",\"deviceApiError\":\"设备 API 请求失败: {{status}} {{statusText}}\",\"msg\":{\"energyAnalyst\":\"数字能效分析师：能源消耗数据分析报告已生成，本月节能率提升12%\",\"envSpecialist\":\"数字环境专员：冷库温度波动超出预设范围，建议检查制冷系统\",\"security\":\"数字安防监控员：监控到3号区域有未授权人员活动，已自动记录\",\"healthManager\":\"数字设备健康主管：2号生产线设备预测性维护提醒，建议下周检修\",\"coordinator\":\"数字综合运营协调员：已整合各部门数据，月度运营报告可在系统查看\",\"energyAnalyst2\":\"数字能效分析师：发现能耗异常峰值，可能存在设备效率问题\",\"envSpecialist2\":\"数字环境专员：环境监测系统显示空气质量指数良好，符合生产标准\"}},\"device\":{\"list\":\"设备列表\",\"total\":\"共 {{count}} 个设备\",\"service\":\"服务\",\"noData\":\"暂无设备数据\",\"checkConnection\":\"请检查设备连接或刷新页面\",\"details\":\"设备详情\",\"basicInfo\":\"基本信息\",\"name\":\"名称\",\"status\":\"状态\",\"description\":\"描述\",\"profile\":\"配置文件\",\"labels\":\"标签\",\"created\":\"创建时间\",\"unknown\":\"未知\",\"protocolInfo\":\"协议信息\",\"noProtocol\":\"无协议信息\",\"autoEvents\":\"自动事件\",\"onChangeOnly\":\"仅在变化时触发\",\"scheduled\":\"定时触发\"},\"quickReplies\":{\"energyAnalyst\":{\"lighting\":\"💡照明系统是不是开得太久了？有节省空间吗？🤔\",\"ac\":\"💨这几天挺热🌡️，我想知道空调用电是不是超了？🤔\"},\"envSpecialist\":{\"coldStorage\":\"📡冷库环境最近波动大，是不是外面太热？\",\"alerts\":\"🚨有没有严重告警要立即处理？\"},\"healthManager\":{\"trend\":\"🔍调出最近3天空调用电趋势，我看看变化。\",\"abnormal\":\"🛠有没有哪台空调的能耗曲线特别奇怪？\"},\"coordinator\":{\"status\":\"🔎 今天整体状况如何？\",\"trend\":\"📈 最近总能耗趋势怎么样？\"}}}"));}}),
-"[project]/src/locales/zh/common.json (json)": ((__turbopack_context__) => {
+__turbopack_context__.v(JSON.parse("{\"welcome\":\"欢迎来到仪表盘！\",\"sidebar\":{\"home\":\"首页\",\"settings\":\"设置\",\"chatWith\":\"与{{name}}对话\",\"back\":\"返回\",\"latestMessages\":\"最新消息\",\"assistantNames\":{\"energyAnalyst\":\"数字能效分析师\",\"envSpecialist\":\"数字环境专员\",\"healthManager\":\"数字设备健康主管\",\"coordinator\":\"数字综合运营协调员\"},\"descriptions\":{\"energyAnalyst\":\"分析能耗数据，监控设备能耗，标记异常并助力优化\",\"envSpecialist\":\"监控冷库温湿度、光照，异常报警并优化照明使用\",\"healthManager\":\"基于空调能耗识别重大异常，预警设备故障\",\"coordinator\":\"整合多源数据，提供基础运营状态监控仪表盘\"},\"statuses\":{\"energyAnalyst\":\"分析中 - 分析能耗数据\",\"envSpecialist\":\"监控中 - 监控冷库\",\"healthManager\":\"预警中 - 预警设备故障\",\"coordinator\":\"分析中 - 整合多源数据\"}},\"chat\":{\"send\":\"发送\",\"placeholder\":\"请输入你的消息...\",\"typing\":\"对方正在输入...\",\"generating\":\"正在生成响应\"},\"dashboard\":{\"overview\":\"数据概览\",\"totalElectricity\":\"总用电量\",\"abnormalTrend\":\"较正常值异常增高42%\",\"maxAbnormalDate\":\"最大异常日期\",\"monthlySaving\":\"每月预计节约电量\",\"deviceApiError\":\"设备 API 请求失败: {{status}} {{statusText}}\",\"msg\":{\"energyAnalyst\":\"数字能效分析师：能源消耗数据分析报告已生成，本月节能率提升12%\",\"envSpecialist\":\"数字环境专员：冷库温度波动超出预设范围，建议检查制冷系统\",\"security\":\"数字安防监控员：监控到3号区域有未授权人员活动，已自动记录\",\"healthManager\":\"数字设备健康主管：2号生产线设备预测性维护提醒，建议下周检修\",\"coordinator\":\"数字综合运营协调员：已整合各部门数据，月度运营报告可在系统查看\",\"energyAnalyst2\":\"数字能效分析师：发现能耗异常峰值，可能存在设备效率问题\",\"envSpecialist2\":\"数字环境专员：环境监测系统显示空气质量指数良好，符合生产标准\"}},\"device\":{\"list\":\"设备列表\",\"total\":\"共 {{count}} 个设备\",\"service\":\"服务\",\"noData\":\"暂无设备数据\",\"checkConnection\":\"请检查设备连接或刷新页面\",\"details\":\"设备详情\",\"basicInfo\":\"基本信息\",\"name\":\"名称\",\"status\":\"状态\",\"description\":\"描述\",\"profile\":\"配置文件\",\"labels\":\"标签\",\"created\":\"创建时间\",\"unknown\":\"未知\",\"protocolInfo\":\"协议信息\",\"noProtocol\":\"无协议信息\",\"autoEvents\":\"自动事件\",\"onChangeOnly\":\"仅在变化时触发\",\"scheduled\":\"定时触发\",\"commands\":\"设备指令\",\"viewCommands\":\"查看该设备支持的指令和操作\",\"commandsTitle\":\"设备指令文档\",\"commandsDescription\":\"以下是该设备支持的所有指令和操作。您可以通过这些指令控制和管理设备。\",\"commandsError\":\"获取设备指令失败\",\"noCommands\":\"该设备没有可用的指令\",\"endpoint\":\"接口路径\",\"parameters\":\"参数\",\"resourceName\":\"资源名称\",\"valueType\":\"值类型\"},\"quickReplies\":{\"energyAnalyst\":{\"lighting\":\"💡照明系统是不是开得太久了？有节省空间吗？🤔\",\"ac\":\"💨这几天挺热🌡️，我想知道空调用电是不是超了？🤔\"},\"envSpecialist\":{\"coldStorage\":\"📡冷库环境最近波动大，是不是外面太热？\",\"alerts\":\"🚨有没有严重告警要立即处理？\"},\"healthManager\":{\"trend\":\"🔍调出最近3天空调用电趋势，我看看变化。\",\"abnormal\":\"🛠有没有哪台空调的能耗曲线特别奇怪？\"},\"coordinator\":{\"status\":\"🔎 今天整体状况如何？\",\"trend\":\"📈 最近总能耗趋势怎么样？\"}}}"));}}),
+"[project]/src/locales/zh-CN/common.json (json)": ((__turbopack_context__) => {
 
 var { g: global, __dirname } = __turbopack_context__;
 {
@@ -830,10 +830,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$i18next$2f$d
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_context__.i("[project]/node_modules/react-i18next/dist/es/index.js [app-ssr] (ecmascript) <module evaluation>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$initReactI18next$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-i18next/dist/es/initReactI18next.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$i18next$2d$browser$2d$languagedetector$2f$dist$2f$esm$2f$i18nextBrowserLanguageDetector$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/i18next-browser-languagedetector/dist/esm/i18nextBrowserLanguageDetector.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$en$2f$translation$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/locales/en/translation.json (json)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$en$2f$common$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/locales/en/common.json (json)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$zh$2f$translation$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/locales/zh/translation.json (json)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$zh$2f$common$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/locales/zh/common.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$en$2d$US$2f$translation$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/locales/en-US/translation.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$en$2d$US$2f$common$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/locales/en-US/common.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$zh$2d$CN$2f$translation$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/locales/zh-CN/translation.json (json)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$zh$2d$CN$2f$common$2e$json__$28$json$29$__ = __turbopack_context__.i("[project]/src/locales/zh-CN/common.json (json)");
 ;
 ;
 ;
@@ -842,13 +842,13 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$zh$2f$comm
 ;
 ;
 const resources = {
-    en: {
-        translation: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$en$2f$translation$2e$json__$28$json$29$__["default"],
-        common: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$en$2f$common$2e$json__$28$json$29$__["default"]
+    'en-US': {
+        translation: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$en$2d$US$2f$translation$2e$json__$28$json$29$__["default"],
+        common: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$en$2d$US$2f$common$2e$json__$28$json$29$__["default"]
     },
-    zh: {
-        translation: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$zh$2f$translation$2e$json__$28$json$29$__["default"],
-        common: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$zh$2f$common$2e$json__$28$json$29$__["default"]
+    'zh-CN': {
+        translation: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$zh$2d$CN$2f$translation$2e$json__$28$json$29$__["default"],
+        common: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$locales$2f$zh$2d$CN$2f$common$2e$json__$28$json$29$__["default"]
     }
 };
 // 获取当前语言，优先使用localStorage中保存的语言，否则默认使用中文
@@ -856,13 +856,13 @@ const getInitialLanguage = ()=>{
     if ("TURBOPACK compile-time falsy", 0) {
         "TURBOPACK unreachable";
     }
-    return 'zh';
+    return 'en-US';
 };
 __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$i18next$2f$dist$2f$esm$2f$i18next$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].use(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$initReactI18next$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["initReactI18next"]).use(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$i18next$2d$browser$2d$languagedetector$2f$dist$2f$esm$2f$i18nextBrowserLanguageDetector$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]) // 添加语言检测器
 .init({
     resources,
     lng: getInitialLanguage(),
-    fallbackLng: 'en',
+    fallbackLng: 'en-US',
     interpolation: {
         escapeValue: false
     },
@@ -871,7 +871,7 @@ __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$i18next$2f$dist$
             'localStorage',
             'navigator'
         ],
-        lookupLocalStorage: 'i18nextLng',
+        lookupLocalStorage: 'i18nextLngCfg',
         caches: [
             'localStorage'
         ]
@@ -2669,7 +2669,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$i18n$2e$ts__$5b$app$2
 ;
 const LanguageSwitcher = ()=>{
     const { i18n: i18nHook } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$i18next$2f$dist$2f$es$2f$useTranslation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useTranslation"])();
-    const [currentLang, setCurrentLang] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('zh');
+    const [currentLang, setCurrentLang] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('zh-CN');
     // 初始化当前语言状态
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         setCurrentLang(i18nHook.language);
@@ -2678,7 +2678,7 @@ const LanguageSwitcher = ()=>{
     ]);
     // 切换语言函数
     const toggleLanguage = ()=>{
-        const newLang = currentLang === 'zh' ? 'en' : 'zh';
+        const newLang = currentLang === 'zh-CN' ? 'en-US' : 'zh-CN';
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$i18n$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].changeLanguage(newLang);
         setCurrentLang(newLang);
         console.log('语言已切换为:', newLang);
@@ -2689,7 +2689,7 @@ const LanguageSwitcher = ()=>{
         onClick: toggleLanguage,
         className: "fixed top-4 left-4 z-50 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md  hover:bg-white/20 transition-colors text-white text-sm font-medium flex items-center",
         children: [
-            currentLang === 'zh' ? '中文' : 'English',
+            currentLang === 'zh-CN' ? '中文' : 'English',
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                 xmlns: "http://www.w3.org/2000/svg",
                 className: "h-4 w-4 ml-1.5",
@@ -3108,4 +3108,4 @@ function DashboardPage() {
 
 };
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__43dda40c._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__25c9a05e._.js.map

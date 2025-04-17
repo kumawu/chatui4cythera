@@ -48,7 +48,7 @@ interface ChatComponentProps {
 }
 
 export default function ChatComponent({ currentRole = '' }: ChatComponentProps) {
-  const { t } = useTranslation('translation');
+  const { t, i18n } = useTranslation('translation');
   const { messages, appendMsg, updateMsg } = useMessages([]);
   const { setThinkData } = useThinkContext();
   const [isTyping, setIsTyping] = useState(false);
@@ -116,33 +116,36 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
         });
         const currentMessageId = messageId;
         
-        // 根据当前角色选择对应的 chatBot API
-        let chatBot = '/api/chat-bot1'; // 默认值
+        // 使用统一的聊天API路由
+        const chatBot = '/api/chat';
+        
+        console.log(`当前角色: ${currentRole}, 使用统一API: ${chatBot}`);
         
         // 获取当前语言的助手名称数组
         const assistantNames = getAssistantNames();
         
-        // 根据助手名称选择对应的API端点
-        if (currentRole === assistantNames[0]) {
-          chatBot = '/api/chat-bot1'; // 数字能效分析师
-        } else if (currentRole === assistantNames[1]) {
-          chatBot = '/api/chat-bot2'; // 数字环境专员
-        } else if (currentRole === assistantNames[2]) {
-          chatBot = '/api/chat-bot3'; // 数字设备健康主管
-        } else if (currentRole === assistantNames[3]) {
-          chatBot = '/api/chat-bot4'; // 数字综合运营协调员
-        } else {
-          chatBot = '/api/chat-bot4'; // 默认
+        // 根据角色名称获取助手索引
+        let assistantIndex = -1;
+        for (let i = 0; i < assistantNames.length; i++) {
+          if (currentRole === assistantNames[i]) {
+            assistantIndex = i;
+            break;
+          }
         }
         
-        console.log(`当前角色: ${currentRole}, 使用 API: ${chatBot}`);
+        console.log(`助手索引: ${assistantIndex}`);
         
         const chatResponse = await fetch(chatBot, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ message: val, role: currentRole })
+          body: JSON.stringify({ 
+            message: val, 
+            role: currentRole, 
+            assistantIndex, 
+            language: i18n.language 
+          })
         });
         
         if (!chatResponse.ok) {
@@ -217,7 +220,8 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
                     },
                     body: JSON.stringify({
                       message: accumulatedContent,
-                      role: 'user'
+                      role: 'user',
+                      language: i18n.language
                     })
                   })
                   .then(response => response.json())
@@ -282,13 +286,13 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
       console.log('显示 loading 指示器', msg);
       return (
         <Bubble>
-          <div className="flex items-center space-x-2 p-4">
-            <div className="flex space-x-1">
+          <div className="flex items-center space-x-3 p-3">
+            <div className="flex space-x-1.5">
               <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" style={{ animationDelay: '0ms' }}></div>
               <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" style={{ animationDelay: '300ms' }}></div>
               <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" style={{ animationDelay: '600ms' }}></div>
             </div>
-            <span className="text-sm text-indigo-300 p-2">{t('chat.generating')}</span>
+            <span className="text-sm text-indigo-500">{t('chat.generating')}</span>
           </div>
         </Bubble>
       );

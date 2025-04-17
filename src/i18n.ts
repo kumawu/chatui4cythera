@@ -1,17 +1,17 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import enTranslation from './locales/en/translation.json';
-import enCommon from './locales/en/common.json';
-import zhTranslation from './locales/zh/translation.json';
-import zhCommon from './locales/zh/common.json';
+import enTranslation from './locales/en-US/translation.json';
+import enCommon from './locales/en-US/common.json';
+import zhTranslation from './locales/zh-CN/translation.json';
+import zhCommon from './locales/zh-CN/common.json';
 
 const resources = {
-  en: {
+  'en-US': {
     translation: enTranslation,
     common: enCommon,
   },
-  zh: {
+  'zh-CN': {
     translation: zhTranslation,
     common: zhCommon,
   },
@@ -20,9 +20,9 @@ const resources = {
 // 获取当前语言，优先使用localStorage中保存的语言，否则默认使用中文
 const getInitialLanguage = () => {
   if (typeof window !== 'undefined') {
-    return localStorage.getItem('i18nextLng') || 'zh';
+    return localStorage.getItem('i18nextLngCfg') || 'en-US';
   }
-  return 'zh';
+  return 'en-US';
 };
 
 i18n
@@ -31,13 +31,13 @@ i18n
   .init({
     resources,
     lng: getInitialLanguage(),
-    fallbackLng: 'en',
+    fallbackLng: 'en-US',
     interpolation: {
       escapeValue: false,
     },
     detection: {
       order: ['localStorage', 'navigator'],
-      lookupLocalStorage: 'i18nextLng',
+      lookupLocalStorage: 'i18nextLngCfg',
       caches: ['localStorage'],
     },
   });

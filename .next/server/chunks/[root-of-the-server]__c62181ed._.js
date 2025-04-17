@@ -68,15 +68,18 @@ const DIFY_API_URL = 'http://haf.api.weibo.com/v1/chat-messages';
 const DIFY_API_KEY = process.env.DIFY_API_KEY || 'app-eIojnVljpRicGH1Y1MMRBgzC'; // 建议使用环境变量
 async function POST(request) {
     try {
-        const { message, role, conversationId } = await request.json();
+        const { message, role, conversationId, language } = await request.json();
         console.log("Chat API 请求:", {
             message,
             role,
-            conversationId
+            conversationId,
+            language
         });
         // 构建发送到 Dify 的请求体
         const difyRequestBody = {
-            inputs: {},
+            inputs: {
+                language: language || 'en-US' // 默认使用英文
+            },
             query: message,
             response_mode: "streaming",
             conversation_id: conversationId,

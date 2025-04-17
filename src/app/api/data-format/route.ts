@@ -6,14 +6,15 @@ const DIFY_API_KEY = 'app-ZzIiSaGBR6u4zqHsRHXgXXCv';
 
 export async function POST(request: Request) {
   try {
-    const { message, role } = await request.json();
+    const { message, role, language } = await request.json();
     
-    console.log("Dify Query API 请求:", { message, role });
+    console.log("Dify Query API 请求:", { message, role, language });
     
     // 构建发送到 Dify 的请求体
     const difyRequestBody = {
       inputs: {
-        content: message
+        content: message,
+        language: language || 'en-US' // 使用请求中的语言或默认值
       }, // 可选的输入参数
       response_mode: "blocking", // 阻塞模式
       user: role || "default_user" // 用户标识，这里使用角色名称

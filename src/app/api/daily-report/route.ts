@@ -1,123 +1,9 @@
 import { NextResponse } from 'next/server';
 
-// 生成分析报告，返回带有 markdown 内容和 DSL 配置的响应
-function generateAnalysisReport() {
-  const currentDate = new Date().toLocaleDateString('zh-CN');
-  const monthlyGrowth = ((280 - 250) / 250 * 100).toFixed(1);
-  
-  const markdownContent = `
-# 📊 招聘数据分析报告
-**日期:** ${currentDate}
-
-## 关键指标
-| 指标 | 值 |
-|------|----|
-| 总候选人 | 280 |
-| 热门职位 | 工程师 |
-| 热门技能 | JavaScript |
-| 平均薪资 | 18k |
-
-## 趋势分析
-- **月度增长:** ${monthlyGrowth}%
-- **技能需求:**
-  - JavaScript: 90
-  - Python: 55
-  - React: 60
-- **薪资分布:**
-  - 10-20k: 110
-  - 20-30k: 90
-  - 30k+: 50
-
-## 建议
-${[
-  '加强工程师岗位招聘力度',
-  '增加JavaScript相关培训资源',
-  '关注10-20k薪资区间候选人'
-].map(rec => `- ${rec}`).join('\n')}
-`;
-
-  // 创建符合 ThinkData 结构的 DSL 内容
-  const dslContent = {
-    layout: "grid(2, 2)",
-    cards: [
-      {
-        type: "summary",
-        metrics: [
-          { title: "总候选人", value: 280, trend: "+12%" },
-          { title: "热门职位", value: "工程师" },
-          { title: "平均薪资", value: "18k" }
-        ]
-      }
-    ],
-    charts: [
-      {
-        type: "bar",
-        data: [
-          { name: "1月", value: 120 },
-          { name: "2月", value: 150 },
-          { name: "3月", value: 180 },
-          { name: "4月", value: 200 },
-          { name: "5月", value: 220 },
-          { name: "6月", value: 250 },
-          { name: "7月", value: 280 }
-        ],
-        title: "月度候选人趋势",
-        xAxis: "月份",
-        yAxis: "人数"
-      },
-      {
-        type: "pie",
-        data: [
-          { name: "engineering", value: 100 },
-          { name: "marketing", value: 60 },
-          { name: "sales", value: 50 },
-          { name: "design", value: 25 },
-          { name: "hr", value: 45 }
-        ],
-        title: "职位分布"
-      },
-      {
-        type: "radar",
-        data: [
-          { skill: "javascript", value: 90 },
-          { skill: "python", value: 55 },
-          { skill: "java", value: 50 },
-          { skill: "react", value: 60 },
-          { skill: "sql", value: 45 }
-        ],
-        title: "技能分布"
-      }
-    ]
-  };
-  
-  // 创建 ThinkData 对象
-  const thinkData = {
-    content: markdownContent,
-    parsedContent: dslContent,
-    metadata: {
-      title: "招聘数据分析",
-      timestamp: new Date().toISOString()
-    }
-  };
-
-  return [
-    {
-      type: 'markdown',
-      content: markdownContent,
-      position: 'left'
-    },
-    {
-      type: 'think',
-      content: thinkData,
-      position: 'pop'
-    }
-  ];
-}
-
 // 生成能源数据报告
 function generateEnergyReport() {
   const currentDate = new Date().toLocaleDateString('zh-CN');
-  
+
   const markdownContent = `
 # 📊 能源消耗数据分析报告
 **日期:** ${currentDate}
@@ -137,46 +23,6 @@ function generateEnergyReport() {
   - 空调系统: 良
   - 生产设备: 中
 `;
-
-  // 创建符合 ThinkData 结构的 DSL 内容
-  // const dslContent = {
-  //   layout: "grid(2, 2)",
-  //   cards: [
-  //     {
-  //       type: "summary",
-  //       metrics: [
-  //         { title: "总能耗", value: "12,500 kWh", trend: "-15%" },
-  //         { title: "节能率", value: "15%" },
-  //         { title: "异常设备", value: "3号空调" }
-  //       ]
-  //     }
-  //   ],
-  //   charts: [
-  //     {
-  //       type: "bar",
-  //       data: [
-  //         { name: "照明", value: 3200 },
-  //         { name: "空调", value: 4500 },
-  //         { name: "生产", value: 3800 },
-  //         { name: "其他", value: 1000 }
-  //       ],
-  //       title: "能耗分布",
-  //       xAxis: "设备类型",
-  //       yAxis: "能耗(kWh)"
-  //     },
-  //     {
-  //       type: "pie",
-  //       data: [
-  //         { name: "engineering", value: 120 },
-  //         { name: "marketing", value: 40 },
-  //         { name: "sales", value: 30 },
-  //         { name: "design", value: 15 },
-  //         { name: "hr", value: 25 }
-  //       ],
-  //       title: "部门能耗占比"
-  //     }
-  //   ]
-  // };
   const dslContent = {
     "layout": "grid(2, 2)",
     "cards": [
@@ -260,7 +106,7 @@ function generateEnergyReport() {
       }
     ]
   }
-;
+    ;
   // 创建 ThinkData 对象
   const thinkData = {
     content: markdownContent,
@@ -288,7 +134,7 @@ function generateEnergyReport() {
 // 生成冷库监控报告
 function generateColdStorageReport() {
   const currentDate = new Date().toLocaleDateString('zh-CN');
-  
+
   const markdownContent = `
 # 🧊 冷库温度监控报告
 **日期:** ${currentDate}
@@ -336,7 +182,7 @@ function generateColdStorageReport() {
       }
     ]
   };
-  
+
   // 创建 ThinkData 对象
   const thinkData = {
     content: markdownContent,
@@ -364,7 +210,7 @@ function generateColdStorageReport() {
 // 生成安防监控报告
 function generateSecurityReport() {
   const currentDate = new Date().toLocaleDateString('zh-CN');
-  
+
   const markdownContent = `
 # 🔐 安防监控报告
 **日期:** ${currentDate}
@@ -411,7 +257,7 @@ function generateSecurityReport() {
       }
     ]
   };
-  
+
   // 创建 ThinkData 对象
   const thinkData = {
     content: markdownContent,
@@ -439,7 +285,7 @@ function generateSecurityReport() {
 // 生成设备健康报告
 function generateDeviceHealthReport() {
   const currentDate = new Date().toLocaleDateString('zh-CN');
-  
+
   const markdownContent = `
 # 🔧 设备健康状态报告
 **日期:** ${currentDate}
@@ -483,7 +329,7 @@ function generateDeviceHealthReport() {
       }
     ]
   };
-  
+
   // 创建 ThinkData 对象
   const thinkData = {
     content: markdownContent,
@@ -511,7 +357,7 @@ function generateDeviceHealthReport() {
 // 生成综合运营报告
 function generateOperationReport() {
   const currentDate = new Date().toLocaleDateString('zh-CN');
-  
+
   const markdownContent = `
 # 📈 综合运营报告
 **日期:** ${currentDate}
@@ -558,7 +404,7 @@ function generateOperationReport() {
       }
     ]
   };
-  
+
   // 创建 ThinkData 对象
   const thinkData = {
     content: markdownContent,
@@ -586,9 +432,9 @@ function generateOperationReport() {
 export async function POST(request: Request) {
   try {
     const { message, role } = await request.json();
-    
+
     let response;
-    console.log("daily-report: ",message, role)
+    console.log("daily-report: ", message, role)
     // 根据角色和消息内容返回不同的报告
     if (role === '数字能效分析师') {
       // 能效分析师角色
@@ -609,7 +455,7 @@ export async function POST(request: Request) {
       // 默认返回 综合运营协调员角色数据
       response = generateOperationReport();
     }
-    
+
     return NextResponse.json(Array.isArray(response) ? response : [response]);
   } catch (error) {
     console.error('API错误:', error);
