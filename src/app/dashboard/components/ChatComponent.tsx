@@ -55,6 +55,7 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
   const [isStreaming, setIsStreaming] = useState(false); // 添加流式响应状态
   const chatRef = useRef<any>(null);
   const thinkContentRef = useRef<string | null>(null);
+  const dataFormatRequestedRef = useRef<boolean>(false); // 用于跟踪是否已经请求过 data-format
 
   useEffect(() => {
     console.log('thinkContentRef 更新检测:', thinkContentRef.current);
@@ -163,6 +164,9 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
         let conversationId: string | null = null;
         let finishFlag = false;
         
+        // 重置 data-format 请求状态
+        dataFormatRequestedRef.current = false;
+        
         // 读取流数据
         while (true) {
           const { done, value } = await reader.read();
@@ -176,7 +180,26 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
             if (line.startsWith('data: ')) {
               const data = line.slice(6);
               try {
-                const parsedData = JSON.parse(data);
+                // 检查数据是否是有效的JSON格式
+                if (!data || data.trim() === '') {
+                  console.warn('收到空数据');
+                  continue;
+                }
+                
+                // 尝试解析JSON
+                let parsedData;
+                try {
+                  parsedData = JSON.parse(data);
+                } catch (jsonError) {
+                  console.warn('JSON解析错误:', data, jsonError);
+                  continue; // 跳过这个数据块
+                }
+                
+                // 检查解析后的数据是否有效
+                if (!parsedData || typeof parsedData !== 'object') {
+                  console.warn('解析后的数据无效:', parsedData);
+                  continue;
+                }
                 
                 // 保存会话 ID
                 if (parsedData.metadata?.conversation_id && !conversationId) {
@@ -185,39 +208,34 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
                 
                 // 过滤掉 <tools_data_result>...</tools_data_result> 标签及其内容
                 const filteredContent = parsedData.content ? parsedData.content.replace(/<tools_data_result>[\s\S]*?<\/tools_data_result>/g, '') : '';
-                accumulatedContent += parsedData.content;
-                noToolDataContent += filteredContent;
                 
-                updateMsg(currentMessageId, {
-                  type: 'markdown',
-                  content: { text: noToolDataContent },
-                  position: 'left',
-                });
-
-                // if(currentMessageId && !finishFlag){
-                //   // 如果收到了<tools_data_result>就停止更新message
-                //   if (accumulatedContent.includes('<tools_data_result>')) {
-                //     finishFlag = true;
-                //     noToolDataContent = accumulatedContent.replace('<tools_data_result>', '');
-                    
-                //     updateMsg(currentMessageId, {
-                //       type: 'markdown',
-                //       content: { text: noToolDataContent },
-                //       position: 'left',
-                //     });
-                //   }else {
-                //     // 每次更新都保持使用 markdown 类型
-                //     updateMsg(currentMessageId, {
-                //       type: 'markdown',
-                //       content: { text: accumulatedContent },
-                //       position: 'left',
-                //     });
-                //   }
-                // }
-                
-                // 如果消息中包含完整的tools_data_result标签，则处理数据格式化
-                if (accumulatedContent.includes('<tools_data_result>') && accumulatedContent.includes('</tools_data_result>')) {
+                // 确保 parsedData.content 存在才添加到累积内容中
+                if (parsedData.content) {
+                  accumulatedContent += parsedData.content;
+                  noToolDataContent += filteredContent;
                   
+                  // 更新消息内容，确保内容不为空
+                  updateMsg(currentMessageId, {
+                    type: 'markdown',
+                    content: { text: noToolDataContent || ' ' }, // 确保至少有一个空格，避免空内容问题
+                    position: 'left',
+                  });
+                }
+
+                if(parsedData.metadata?.event_type === 'message_end'){
+                  // 流式响应完成，获取数据完成，设置状态为 false
+                  setIsStreaming(false);
+                  setIsTyping(false); // 同时关闭打字指示器
+                }
+
+                // 如果消息中包含完整的tools_data_result标签，则处理数据格式化
+                // 添加锁机制，确保只触发一次 data-format 请求
+                if (!dataFormatRequestedRef.current && 
+                    accumulatedContent.includes('<tools_data_result>') && 
+                    accumulatedContent.includes('</tools_data_result>')) {
+                  
+                  // 设置锁，防止重复请求
+                  dataFormatRequestedRef.current = true;
                   
                   // 将消息内容存入 Think 上下文
                   console.log('完整响应:', accumulatedContent);
@@ -236,12 +254,16 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
                   })
                   .then(response => response.json())
                   .then(data => {
-                    // 从 data-format 接口响应中获取内容并设置到 
-                    // 流式响应完成，获取数据完成，设置状态为 false
-                    setIsStreaming(false);
-                    setIsTyping(false); // 同时关闭打字指示器
+                    // 从 data-format 接口响应中获取内容并设置到 ThinkContext
+                  
+                  
+                  // 检查返回的数据是否有效
+                  if (!data || (!data.cards && !data.charts)) {
+                    console.warn('从 data-format 接口返回的数据无效:', data);
+                    return;
+                  }
 
-                    setThinkData({
+                  setThinkData({
                       content: noToolDataContent,
                       parsedContent: {
                         layout: 'grid(2, 2)',
@@ -259,11 +281,20 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
                   })
                   .catch(error => {
                     console.error('调用 data-format 接口出错:', error);
+                    // 更新消息，添加错误提示
+                    const errorMessage = noToolDataContent + '\n\n> **注意**: 数据处理过程中发生错误，部分内容可能无法正确显示。';
+                    updateMsg(currentMessageId, {
+                      type: 'markdown',
+                      content: { text: errorMessage },
+                      position: 'left',
+                    });
                   });
                   
                   break;
                 }
               } catch (e) {
+                setIsStreaming(false);
+                setIsTyping(false); // 同时关闭打字指示器
                 console.error('解析流数据错误:', e, data);
               }
             }
@@ -271,13 +302,17 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
         }
       } catch (error) {
         console.error('发送消息时出错:', error);
+        // 提供更详细的错误信息给用户
+        const errorMessage = error instanceof Error ? error.message : '未知错误';
         appendMsg({
-          type: 'text',
-          content: { text: '处理请求时出错' },
+          type: 'markdown',
+          content: { text: `**处理请求时出错**\n\n可能的原因: ${errorMessage}\n\n请稍后重试或联系管理员。` },
           position: 'left',
         });
         // 发生错误时，重置所有状态
         setIsStreaming(false);
+        // 重置 data-format 请求状态
+        dataFormatRequestedRef.current = false;
         }
       setIsTyping(false); // 关闭打字指示器
     }
@@ -313,8 +348,18 @@ export default function ChatComponent({ currentRole = '' }: ChatComponentProps) 
     }
     
     if (type === 'markdown' && content) {
+      // 确保 content 是有效的，并提取文本内容
       const text = typeof content === 'string' ? content : content?.text || '';
-      const html = marked.parse(text);
+      
+      // 安全地解析 markdown，捕获可能的错误
+      let html = '';
+      try {
+        // marked.parse 返回字符串，不是 Promise
+        html = marked.parse(text) as string;
+      } catch (error) {
+        console.error('Markdown 解析错误:', error);
+        html = `<p>内容解析错误: ${text}</p>`;
+      }
       
       return (
         <div style={{ padding: '0.8rem' }} className="markdown-content bg-white/5 rounded-lg">
